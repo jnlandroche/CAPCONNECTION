@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import BankableLogo from './BankableLogo';
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -31,13 +32,8 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
-          <img
-            src="/bankable-logo-cropped.png"
-            alt="BANKABLE"
-            className="w-auto object-contain"
-            style={{ filter: 'brightness(1.1)', height: '42px' }}
-          />
+        <Link to="/" className="flex-shrink-0 hover:opacity-90 transition-opacity">
+          <BankableLogo height={38} />
         </Link>
 
         {/* Desktop nav */}
@@ -105,7 +101,7 @@ export default function Nav() {
           <Link
             to="/intake"
             onClick={() => setOpen(false)}
-            className="mt-3 bg-gold-500 text-navy-900 font-semibold text-center py-3 rounded text-sm"
+            className="mt-3 bg-gold-500 text-navy-900 font-semibold text-center py-3 rounded text-sm block"
           >
             Get My BankGrade™
           </Link>

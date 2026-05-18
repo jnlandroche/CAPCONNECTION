@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import BankableLogo from './BankableLogo';
 
 export default function Footer() {
   return (
@@ -9,7 +10,7 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="md:col-span-1">
-            <img src="/bankable-logo.png" alt="BANKABLE" className="h-8 w-auto object-contain mb-4" style={{ filter: 'brightness(1.05)' }} />
+            <div className="mb-4"><BankableLogo height={28} /></div>
             <p className="text-silver-600 text-xs leading-relaxed mb-1">See Your Business the Way Lenders Do.</p>
             <p className="text-silver-700 text-xs leading-relaxed mt-2">
               Institutional credit intelligence for middle market companies. Prototype platform — not a licensed financial advisor.
