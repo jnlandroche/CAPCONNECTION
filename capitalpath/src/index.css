@@ -77,7 +77,7 @@ select.cp-input option { background: #0B1F33; color: white; }
   100% { transform: translateX(-50%); }
 }
 .ticker-track {
-  animation: tickerScroll 50s linear infinite;
+  animation: tickerScroll 25s linear infinite;
   white-space: nowrap;
   display: flex;
 }
