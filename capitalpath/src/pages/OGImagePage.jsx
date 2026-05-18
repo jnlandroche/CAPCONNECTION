@@ -23,42 +23,42 @@ export default function OGImagePage() {
       {/* Glow */}
       <div style={{
         position: 'absolute',
-        top: '50%', left: '50%',
+        top: '40%', left: '50%',
         transform: 'translate(-50%, -60%)',
-        width: 700, height: 400,
-        background: 'radial-gradient(ellipse, rgba(45,91,255,0.12) 0%, transparent 70%)',
+        width: 900, height: 500,
+        background: 'radial-gradient(ellipse, rgba(45,91,255,0.13) 0%, transparent 70%)',
         borderRadius: '50%',
       }} />
 
       {/* Content */}
-      <div style={{ position: 'relative', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
+      <div style={{ position: 'relative', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
         {/* Logo mark */}
-        <div style={{ marginBottom: 32 }}>
-          <svg width="72" height="72" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div style={{ marginBottom: 28 }}>
+          <svg width="100" height="100" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="40" height="40" rx="9" fill="#0B1D2D" />
-            <rect x="0.5" y="0.5" width="39" height="39" rx="8.5" stroke="rgba(45,91,255,0.4)" />
-            <text x="7" y="28" fontSize="18" fontWeight="700" fill="white" fontFamily="sans-serif">BG</text>
+            <rect x="0.5" y="0.5" width="39" height="39" rx="8.5" stroke="rgba(45,91,255,0.5)" strokeWidth="1" />
+            <text x="6.5" y="28" fontSize="18" fontWeight="700" fill="white" fontFamily="sans-serif">BG</text>
             <path d="M5.5 29.5 L11.5 35.5 L34.5 14" stroke="#D4AF37" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
 
         {/* Wordmark */}
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 0, marginBottom: 20 }}>
-          <span style={{ fontSize: 64, fontWeight: 700, color: 'white', letterSpacing: '-1px', lineHeight: 1 }}>Bank</span>
-          <span style={{ fontSize: 64, fontWeight: 700, color: '#2D5BFF', letterSpacing: '-1px', lineHeight: 1 }}>Grade</span>
+        <div style={{ display: 'flex', alignItems: 'baseline', marginBottom: 22 }}>
+          <span style={{ fontSize: 88, fontWeight: 700, color: 'white', letterSpacing: '-2px', lineHeight: 1 }}>Bank</span>
+          <span style={{ fontSize: 88, fontWeight: 700, color: '#2D5BFF', letterSpacing: '-2px', lineHeight: 1 }}>Grade</span>
         </div>
 
         {/* Divider */}
-        <div style={{ width: 48, height: 2, background: 'rgba(212,175,55,0.5)', borderRadius: 2, marginBottom: 24 }} />
+        <div style={{ width: 56, height: 3, background: '#D4AF37', borderRadius: 3, marginBottom: 28, opacity: 0.7 }} />
 
         {/* Tagline */}
-        <p style={{ fontSize: 22, fontWeight: 500, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.01em', margin: 0 }}>
+        <p style={{ fontSize: 28, fontWeight: 500, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.01em', margin: 0, lineHeight: 1.4 }}>
           Know Your BankGrade Before the Market Does.
         </p>
 
         {/* Sub */}
-        <p style={{ fontSize: 14, fontWeight: 400, color: 'rgba(255,255,255,0.28)', marginTop: 14, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+        <p style={{ fontSize: 15, fontWeight: 500, color: 'rgba(255,255,255,0.25)', marginTop: 18, letterSpacing: '0.18em', textTransform: 'uppercase' }}>
           Middle Market Financing Intelligence
         </p>
       </div>
