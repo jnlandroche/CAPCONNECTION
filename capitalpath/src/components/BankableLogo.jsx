@@ -1,90 +1,117 @@
 import React from 'react';
 
+/**
+ * BANKABLE logo — SVG recreation matching the brand mark:
+ * · Silver/chrome circular ring
+ * · Three gold bar-chart columns inside (left to right, ascending)
+ * · Bold gold diagonal sweep arc cutting across the circle (lower-left → upper-right)
+ * · "BANKABLE" metallic wordmark in wide-tracked bold Poppins
+ */
 export default function BankableLogo({ height = 40, className = '' }) {
-  const scale = height / 52;
-  const markSize = 52 * scale;
-  const totalWidth = (52 + 8 + 150) * scale;
+  // viewBox is 240 wide × 60 tall (icon ~60×60, gap 10, text ~170)
+  const vW = 240, vH = 60;
+  const aspect = vW / vH;
+  const w = height * aspect;
+
+  // Icon centre & ring
+  const cx = 30, cy = 30, r = 26;
 
   return (
     <svg
-      width={totalWidth}
+      width={w}
       height={height}
-      viewBox={`0 0 210 52`}
+      viewBox={`0 0 ${vW} ${vH}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      role="img"
       aria-label="BANKABLE"
     >
       <defs>
-        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#D4B876" />
-          <stop offset="50%" stopColor="#C8A45D" />
-          <stop offset="100%" stopColor="#A8843D" />
-        </linearGradient>
-        <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#D4D8E2" />
-          <stop offset="50%" stopColor="#B7BDC7" />
+        {/* Silver/chrome ring gradient */}
+        <linearGradient id="bl-ring" x1="10" y1="4" x2="50" y2="56" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stopColor="#E8EAEE" />
+          <stop offset="35%"  stopColor="#B7BDC7" />
+          <stop offset="65%"  stopColor="#D4D8E2" />
           <stop offset="100%" stopColor="#8A9099" />
         </linearGradient>
-        <linearGradient id="sweepGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#C8A45D" />
-          <stop offset="100%" stopColor="#D4B876" stopOpacity="0.4" />
+
+        {/* Gold bar gradient */}
+        <linearGradient id="bl-gold" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+          <stop offset="0%"   stopColor="#E8CE88" />
+          <stop offset="50%"  stopColor="#C8A45D" />
+          <stop offset="100%" stopColor="#A8843D" />
         </linearGradient>
-        <linearGradient id="textGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#FFFFFF" />
-          <stop offset="40%" stopColor="#E8EAF0" />
+
+        {/* Gold sweep arc gradient (fades to transparent at tail) */}
+        <linearGradient id="bl-sweep" x1="4" y1="52" x2="56" y2="8" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stopColor="#C8A45D" stopOpacity="0.15" />
+          <stop offset="40%"  stopColor="#D4B876" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#E8CE88" />
+        </linearGradient>
+
+        {/* Wordmark chrome gradient */}
+        <linearGradient id="bl-text" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+          <stop offset="0%"   stopColor="#FFFFFF" />
+          <stop offset="45%"  stopColor="#E8EAF0" />
           <stop offset="100%" stopColor="#B7BDC7" />
         </linearGradient>
+
+        {/* Clip to circle interior for bars */}
+        <clipPath id="bl-clip">
+          <circle cx={cx} cy={cy} r={r - 1.5} />
+        </clipPath>
       </defs>
 
-      {/* ── Icon mark (52×52 viewBox space) ── */}
-
-      {/* Outer silver ring */}
+      {/* ── Outer chrome ring ── */}
       <circle
-        cx="26"
-        cy="26"
-        r="23"
-        stroke="url(#silverGrad)"
-        strokeWidth="2.5"
+        cx={cx} cy={cy} r={r}
+        stroke="url(#bl-ring)"
+        strokeWidth="3"
         fill="none"
-        strokeOpacity="0.85"
       />
 
-      {/* Bar chart — three bars, left to right increasing height */}
-      {/* Left bar (short) */}
-      <rect x="10" y="28" width="6" height="10" rx="1.2" fill="url(#goldGrad)" opacity="0.75" />
-      {/* Center bar (medium) */}
-      <rect x="19" y="21" width="6" height="17" rx="1.2" fill="url(#goldGrad)" opacity="0.9" />
-      {/* Right bar (tall) */}
-      <rect x="28" y="14" width="6" height="24" rx="1.2" fill="url(#goldGrad)" />
+      {/* ── Bar chart columns (clipped inside ring) ── */}
+      <g clipPath="url(#bl-clip)">
+        {/* Short left bar */}
+        <rect x="11" y="35" width="7" height="18" rx="1.5" fill="url(#bl-gold)" opacity="0.8" />
+        {/* Medium centre bar */}
+        <rect x="21" y="26" width="7" height="27" rx="1.5" fill="url(#bl-gold)" opacity="0.9" />
+        {/* Tall right bar */}
+        <rect x="31" y="17" width="7" height="36" rx="1.5" fill="url(#bl-gold)" />
+      </g>
 
-      {/* Gold sweep arc — top-right quadrant, like a momentum arrow */}
+      {/* ── Diagonal gold sweep arc ──
+           Sweeps from bottom-left of ring, curves upward to exit top-right.
+           Uses a cubic bezier for the elegant curved sweep. */}
       <path
-        d="M 26 3 A 23 23 0 0 1 47.9 33"
-        stroke="url(#sweepGrad)"
-        strokeWidth="3"
+        d="M 6 50 C 12 38, 28 20, 55 7"
+        stroke="url(#bl-sweep)"
+        strokeWidth="3.5"
         strokeLinecap="round"
         fill="none"
       />
-      {/* Arrowhead at end of sweep */}
+
+      {/* ── Arrow tip at the end of the sweep ── */}
       <path
-        d="M 45.5 28 L 48.5 33.5 L 43.5 33"
-        stroke="#C8A45D"
-        strokeWidth="2"
+        d="M 51 4 L 57 8 L 50 11"
+        stroke="#D4B876"
+        strokeWidth="2.2"
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
+        opacity="0.9"
       />
 
-      {/* ── Wordmark "BANKABLE" ── */}
+      {/* ── "BANKABLE" wordmark ── */}
       <text
-        x="60"
-        y="33"
+        x="72"
+        y="39"
         fontFamily="'Poppins', 'Segoe UI', system-ui, sans-serif"
-        fontSize="22"
-        fontWeight="600"
-        letterSpacing="3"
-        fill="url(#textGrad)"
+        fontSize="25"
+        fontWeight="700"
+        letterSpacing="2.5"
+        fill="url(#bl-text)"
       >
         BANKABLE
       </text>
