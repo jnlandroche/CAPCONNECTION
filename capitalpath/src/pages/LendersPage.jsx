@@ -22,19 +22,19 @@ export default function LendersPage() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
-            <p className="text-xs font-semibold text-gold-400 tracking-wide uppercase mb-2">Lender Response Tracking</p>
-            <h1 className="font-display text-4xl text-white font-500">Term Sheet Comparison</h1>
+            <p className="text-xs font-semibold text-blue-400 tracking-wide uppercase mb-2">Lender Response Tracking</p>
+            <h1 className="font-display text-4xl text-white font-semibold">Lender Matches</h1>
             <p className="text-slate-400 text-sm mt-1.5">Meridian Distribution Group · $55M Senior Financing · Active Outreach</p>
           </div>
           <div className="flex items-center gap-2">
-            <button className="flex items-center gap-2 text-xs font-medium text-slate-400 hover:text-white border border-navy-700 hover:border-navy-600 px-3 py-2 rounded transition-all">
+            <button className="flex items-center gap-2 text-xs font-medium text-slate-400 hover:text-white border border-white/10 hover:border-white/20 px-3 py-2 rounded-md transition-all">
               <Download size={13} /> Export
             </button>
           </div>
         </div>
 
         {/* Filter tabs */}
-        <div className="flex items-center gap-1 mb-6 bg-navy-900/50 border border-navy-800 rounded-lg p-1 w-fit">
+        <div className="flex items-center gap-1 mb-6 bg-navy-900/50 border border-white/6 rounded-lg p-1 w-fit">
           {statuses.map(s => (
             <button
               key={s}
@@ -57,7 +57,7 @@ export default function LendersPage() {
             { label: 'Best Spread', value: 'SOFR+225' },
           ].map(stat => (
             <div key={stat.label} className="glass-card rounded-lg p-4 text-center">
-              <p className="text-2xl font-display text-white font-500">{stat.value}</p>
+              <p className="text-2xl font-display text-white font-semibold">{stat.value}</p>
               <p className="text-xs font-medium text-slate-500 mt-1">{stat.label}</p>
             </div>
           ))}
@@ -82,13 +82,13 @@ export default function LendersPage() {
               {filtered.map((lender) => (
                 <tr
                   key={lender.id}
-                  className={`cursor-pointer ${selected === lender.id ? 'bg-navy-700/30' : ''}`}
+                  className={`cursor-pointer ${selected === lender.id ? 'bg-blue-500/5' : ''}`}
                   onClick={() => setSelected(selected === lender.id ? null : lender.id)}
                 >
                   <td className="font-semibold text-white">{lender.name}</td>
                   <td className="text-slate-300 text-xs">{lender.structure}</td>
                   <td className="text-white font-mono text-xs">{lender.hold}</td>
-                  <td className="text-gold-400 font-mono text-xs font-semibold">{lender.pricing}</td>
+                  <td className="text-blue-400 font-mono text-xs font-semibold">{lender.pricing}</td>
                   <td className="font-mono text-xs text-slate-400">{lender.fees}</td>
                   <td className="text-xs text-slate-400 max-w-[160px]">{lender.covenants}</td>
                   <td className="text-xs text-slate-400">{lender.timeline}</td>
@@ -110,26 +110,21 @@ export default function LendersPage() {
               <div className="flex items-start justify-between mb-3">
                 <div>
                   <h3 className="text-white font-semibold text-sm">{lender.name}</h3>
-                  <p className="text-slate-400 text-xs mt-0.5">{lender.structure}</p>
+                  <p className="text-slate-400 text-xs mt-0.5 font-medium">{lender.structure}</p>
                 </div>
                 <span className={`text-[10px] font-semibold px-2 py-0.5 rounded border ${statusStyles[lender.status] || ''}`}>
                   {lender.status}
                 </span>
               </div>
               <div className="grid grid-cols-2 gap-3">
-                {[
-                  ['Hold', lender.hold],
-                  ['Pricing', lender.pricing],
-                  ['Fees', lender.fees],
-                  ['Timeline', lender.timeline],
-                ].map(([k, v]) => (
+                {[['Hold', lender.hold], ['Pricing', lender.pricing], ['Fees', lender.fees], ['Timeline', lender.timeline]].map(([k, v]) => (
                   <div key={k}>
                     <p className="text-[10px] font-medium text-slate-500 mb-0.5">{k}</p>
                     <p className="text-xs text-white font-mono">{v}</p>
                   </div>
                 ))}
               </div>
-              <div className="mt-3 pt-3 border-t border-navy-800">
+              <div className="mt-3 pt-3 border-t border-white/6">
                 <p className="text-[10px] font-medium text-slate-500 mb-1">Covenants</p>
                 <p className="text-xs text-slate-400">{lender.covenants}</p>
               </div>
@@ -138,7 +133,7 @@ export default function LendersPage() {
         </div>
 
         {/* Disclosure */}
-        <div className="mt-6 glass-card rounded-lg p-4 border-gold-400/10">
+        <div className="mt-6 glass-card rounded-lg p-4 border-blue-500/10">
           <p className="text-xs text-slate-500 leading-relaxed">
             <span className="font-semibold text-slate-400">Disclosure: </span>
             All lender responses are illustrative data for prototype purposes. Indicative terms do not represent actual loan offers. Pricing indexed to SOFR as of illustration date. Actual terms subject to credit approval, due diligence, and market conditions.

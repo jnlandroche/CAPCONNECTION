@@ -5,31 +5,35 @@ import { ArrowRight, AlertTriangle, CheckCircle, TrendingUp, Shield, Users } fro
 
 const severityColor = { High: 'text-red-400', Medium: 'text-amber-400', Low: 'text-blue-400' };
 const severityBg = { High: 'bg-red-500/10 border-red-500/25', Medium: 'bg-amber-500/10 border-amber-500/25', Low: 'bg-blue-500/10 border-blue-500/25' };
-const fitColor = { Primary: 'text-green-400 bg-green-500/10 border-green-500/25', Secondary: 'text-blue-400 bg-blue-500/10 border-blue-500/25', Consider: 'text-amber-400 bg-amber-500/10 border-amber-500/25', Supplemental: 'text-slate-400 bg-slate-500/10 border-slate-500/25' };
+const fitColor = {
+  Primary: 'text-green-400 bg-green-500/10 border-green-500/25',
+  Secondary: 'text-blue-400 bg-blue-500/10 border-blue-500/25',
+  Consider: 'text-amber-400 bg-amber-500/10 border-amber-500/25',
+  Supplemental: 'text-slate-400 bg-slate-500/10 border-slate-500/25'
+};
 
-function ScoreRing({ score }) {
+function GradeDisplay({ grade, gradeLabel, bankReadinessScore }) {
   const [animated, setAnimated] = useState(false);
   useEffect(() => { setTimeout(() => setAnimated(true), 200); }, []);
 
-  const circumference = 2 * Math.PI * 40;
-  const offset = circumference - (score / 100) * circumference;
-  const color = score >= 80 ? '#22c55e' : score >= 65 ? '#c9a84c' : '#f97316';
+  const circumference = 2 * Math.PI * 44;
+  const offset = circumference - (bankReadinessScore / 100) * circumference;
 
   return (
-    <div className="relative w-32 h-32">
-      <svg className="w-32 h-32 -rotate-90" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="40" fill="none" stroke="#1e3a6e" strokeWidth="8" />
+    <div className="relative w-36 h-36 flex-shrink-0">
+      <svg className="w-36 h-36 -rotate-90" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="44" fill="none" stroke="rgba(45,91,255,0.1)" strokeWidth="6" />
         <circle
-          cx="50" cy="50" r="40" fill="none"
-          stroke={color} strokeWidth="8" strokeLinecap="round"
+          cx="50" cy="50" r="44" fill="none"
+          stroke="#d4af37" strokeWidth="6" strokeLinecap="round"
           strokeDasharray={circumference}
           strokeDashoffset={animated ? offset : circumference}
-          style={{ transition: 'stroke-dashoffset 1.2s cubic-bezier(0.4,0,0.2,1)' }}
+          style={{ transition: 'stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1)' }}
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="text-3xl font-display font-600 text-white">{score}</span>
-        <span className="text-[10px] font-medium text-slate-400 uppercase mt-0.5">Score</span>
+        <span className="text-4xl font-display font-bold text-gold-400 leading-none">{grade}</span>
+        <span className="text-[10px] font-medium text-slate-400 mt-1 text-center px-2 leading-tight">{gradeLabel}</span>
       </div>
     </div>
   );
@@ -37,13 +41,13 @@ function ScoreRing({ score }) {
 
 function LikelihoodBar({ value }) {
   const widths = { High: '80%', Moderate: '50%', Low: '25%' };
-  const colors = { High: 'bg-green-500', Moderate: 'bg-gold-400', Low: 'bg-slate-500' };
+  const colors = { High: 'bg-green-500', Moderate: 'bg-blue-500', Low: 'bg-slate-500' };
   return (
     <div className="flex items-center gap-2 mt-1">
       <div className="flex-1 bg-navy-900 rounded-full h-1">
         <div className={`h-1 rounded-full transition-all duration-700 ${colors[value] || 'bg-slate-500'}`} style={{ width: widths[value] || '30%' }} />
       </div>
-      <span className={`text-[11px] font-medium flex-shrink-0 ${value === 'High' ? 'text-green-400' : value === 'Moderate' ? 'text-gold-400' : 'text-slate-500'}`}>{value}</span>
+      <span className={`text-[11px] font-medium flex-shrink-0 ${value === 'High' ? 'text-green-400' : value === 'Moderate' ? 'text-blue-400' : 'text-slate-500'}`}>{value}</span>
     </div>
   );
 }
@@ -56,22 +60,32 @@ export default function AssessmentPage() {
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <p className="text-xs font-semibold text-gold-400 tracking-wide uppercase mb-2">Financial Assessment</p>
-          <h1 className="font-display text-4xl text-white font-500">Capital Fit Analysis</h1>
-          <p className="text-slate-400 text-sm mt-1.5">Meridian Distribution Group · Intake ID CP-2024-001 · Generated {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+          <p className="text-xs font-semibold text-blue-400 tracking-wide uppercase mb-2">BankGrade Report</p>
+          <h1 className="font-display text-4xl text-white font-semibold">Your BankGrade™ is Ready</h1>
+          <p className="text-slate-400 text-sm mt-1.5">Meridian Distribution Group · Report ID BG-2024-001 · Generated {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
         </div>
 
-        {/* Score banner */}
+        {/* Grade banner */}
         <div className="glass-card rounded-xl p-7 mb-6 flex flex-col md:flex-row items-center gap-8 border-gold-400/15">
-          <ScoreRing score={a.score} />
+          <GradeDisplay grade={a.grade} gradeLabel={a.gradeLabel} bankReadinessScore={a.bankReadinessScore} />
           <div className="flex-1 text-center md:text-left">
             <div className="flex items-center gap-3 justify-center md:justify-start mb-2">
-              <span className="font-display text-3xl text-white font-500">{a.scoreLabel}</span>
+              <span className="font-display text-2xl text-white font-semibold">{a.gradeLabel}</span>
               <span className="text-xs font-semibold bg-green-500/15 border border-green-500/30 text-green-400 px-2.5 py-1 rounded-full">Bankable</span>
             </div>
-            <p className="text-slate-400 text-sm leading-relaxed max-w-lg">
-              This company demonstrates a strong capital profile suitable for institutional lender engagement. EBITDA quality, revenue stability, and leverage headroom align with middle market credit standards. A well-prepared financing package is expected to attract competitive term sheets.
+            <p className="text-slate-400 text-sm leading-relaxed max-w-lg mb-4">
+              This company demonstrates a strong capital profile suitable for institutional lender engagement. EBITDA quality, revenue stability, and leverage headroom align with middle market credit standards.
             </p>
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+              <div className="bg-navy-900/60 rounded-lg px-4 py-2 border border-white/6">
+                <p className="text-[10px] font-medium text-slate-500 uppercase tracking-wide mb-0.5">Bank Readiness Score</p>
+                <p className="text-white font-bold text-lg">{a.bankReadinessScore} <span className="text-slate-500 text-sm font-normal">/ 100</span></p>
+              </div>
+              <div className="bg-navy-900/60 rounded-lg px-4 py-2 border border-white/6">
+                <p className="text-[10px] font-medium text-slate-500 uppercase tracking-wide mb-0.5">Financing Capacity</p>
+                <p className="text-white font-bold text-lg">{a.financingCapacity.min} <span className="text-slate-500 font-normal">–</span> {a.financingCapacity.max}</p>
+              </div>
+            </div>
           </div>
           <div className="flex md:flex-col gap-6 md:gap-4 text-center">
             <div>
@@ -79,7 +93,7 @@ export default function AssessmentPage() {
               <p className="text-white font-semibold font-mono text-sm">{a.leverage.min} – {a.leverage.max}</p>
             </div>
             <div>
-              <p className="text-xs font-medium text-slate-500 mb-1">Pricing Range</p>
+              <p className="text-xs font-medium text-slate-500 mb-1">Indicative Pricing</p>
               <p className="text-white font-semibold font-mono text-sm">{a.pricing.min}</p>
               <p className="text-slate-500 text-xs font-mono">to {a.pricing.max}</p>
             </div>
@@ -90,14 +104,12 @@ export default function AssessmentPage() {
           {/* Likely Structures */}
           <div className="glass-card rounded-xl p-6">
             <h2 className="text-sm font-semibold text-slate-200 mb-5 flex items-center gap-2">
-              <TrendingUp size={15} className="text-gold-400" /> Likely Capital Structures
+              <TrendingUp size={15} className="text-blue-400" /> Likely Capital Structures
             </h2>
             <div className="space-y-4">
               {a.structures.map((s) => (
-                <div key={s.name} className="pb-4 border-b border-navy-800/50 last:border-0 last:pb-0">
-                  <div className="flex justify-between items-start mb-0.5">
-                    <h3 className="text-sm text-white font-medium">{s.name}</h3>
-                  </div>
+                <div key={s.name} className="pb-4 border-b border-white/5 last:border-0 last:pb-0">
+                  <h3 className="text-sm text-white font-medium mb-0.5">{s.name}</h3>
                   <LikelihoodBar value={s.likelihood} />
                   <p className="text-xs text-slate-500 mt-1.5">{s.notes}</p>
                 </div>
@@ -108,12 +120,12 @@ export default function AssessmentPage() {
           {/* Covenant Expectations */}
           <div className="glass-card rounded-xl p-6">
             <h2 className="text-sm font-semibold text-slate-200 mb-5 flex items-center gap-2">
-              <Shield size={15} className="text-gold-400" /> Indicative Covenant Framework
+              <Shield size={15} className="text-blue-400" /> Indicative Covenant Framework
             </h2>
             <div className="space-y-3">
               {a.covenants.map((c, i) => (
-                <div key={i} className="flex items-center gap-3 p-3 bg-navy-900/60 rounded-lg border border-navy-800/50">
-                  <div className="w-1.5 h-1.5 rounded-full bg-gold-400/60 flex-shrink-0" />
+                <div key={i} className="flex items-center gap-3 p-3 bg-navy-900/60 rounded-lg border border-white/5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-400/60 flex-shrink-0" />
                   <span className="text-sm text-slate-300">{c}</span>
                 </div>
               ))}
@@ -131,7 +143,7 @@ export default function AssessmentPage() {
           {/* Key Risks */}
           <div className="glass-card rounded-xl p-6">
             <h2 className="text-sm font-semibold text-slate-200 mb-5 flex items-center gap-2">
-              <AlertTriangle size={15} className="text-gold-400" /> Key Credit Considerations
+              <AlertTriangle size={15} className="text-blue-400" /> Key Credit Considerations
             </h2>
             <div className="space-y-3">
               {a.risks.map((r, i) => (
@@ -151,11 +163,11 @@ export default function AssessmentPage() {
           {/* Lender Fit */}
           <div className="glass-card rounded-xl p-6">
             <h2 className="text-sm font-semibold text-slate-200 mb-5 flex items-center gap-2">
-              <Users size={15} className="text-gold-400" /> Lender Fit Profile
+              <Users size={15} className="text-blue-400" /> Lender Fit Profile
             </h2>
             <div className="space-y-3">
               {a.lenderFit.map((l, i) => (
-                <div key={i} className="p-3 bg-navy-900/60 rounded-lg border border-navy-800/50">
+                <div key={i} className="p-3 bg-navy-900/60 rounded-lg border border-white/5">
                   <div className="flex items-center justify-between mb-1">
                     <h3 className="text-sm text-white font-medium">{l.type}</h3>
                     <span className={`text-[10px] font-semibold px-2 py-0.5 rounded border ${fitColor[l.fit]}`}>{l.fit}</span>
@@ -170,12 +182,12 @@ export default function AssessmentPage() {
         {/* Recommendations */}
         <div className="glass-card rounded-xl p-6 mb-6">
           <h2 className="text-sm font-semibold text-slate-200 mb-5 flex items-center gap-2">
-            <CheckCircle size={15} className="text-gold-400" /> Preparation Recommendations
+            <CheckCircle size={15} className="text-blue-400" /> Preparation Recommendations
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {a.recommendations.map((rec, i) => (
-              <div key={i} className="flex items-start gap-3 p-3 bg-navy-900/50 rounded-lg border border-navy-800/40">
-                <span className="w-5 h-5 rounded-full bg-gold-400/15 border border-gold-400/30 flex items-center justify-center text-[10px] font-bold text-gold-400 flex-shrink-0 mt-0.5">
+              <div key={i} className="flex items-start gap-3 p-3 bg-navy-900/50 rounded-lg border border-white/5">
+                <span className="w-5 h-5 rounded-full bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-[10px] font-bold text-blue-400 flex-shrink-0 mt-0.5">
                   {i + 1}
                 </span>
                 <p className="text-xs text-slate-300 leading-relaxed">{rec}</p>
@@ -185,17 +197,17 @@ export default function AssessmentPage() {
         </div>
 
         {/* CTA */}
-        <div className="flex flex-col sm:flex-row gap-3 items-center justify-between glass-card rounded-xl p-5 border-gold-400/15">
+        <div className="flex flex-col sm:flex-row gap-3 items-center justify-between glass-card rounded-xl p-5 border-blue-500/15">
           <div>
             <p className="text-white font-semibold text-sm">Ready to engage lenders?</p>
             <p className="text-slate-400 text-xs mt-0.5">Review comparative term sheets from our lender network.</p>
           </div>
           <div className="flex gap-3">
-            <Link to="/upload" className="text-sm border border-navy-700 text-slate-300 hover:text-white px-5 py-2.5 rounded transition-all">
+            <Link to="/upload" className="text-sm border border-white/12 text-slate-300 hover:text-white px-5 py-2.5 rounded-md transition-all font-medium">
               Upload Docs
             </Link>
-            <Link to="/lenders" className="text-sm bg-gold-400 hover:bg-gold-300 text-navy-950 font-semibold px-5 py-2.5 rounded transition-all flex items-center gap-1.5">
-              View Lender Comparison <ArrowRight size={14} />
+            <Link to="/lenders" className="text-sm bg-blue-500 hover:bg-blue-400 text-white font-semibold px-5 py-2.5 rounded-md transition-all flex items-center gap-1.5">
+              View Lender Matches <ArrowRight size={14} />
             </Link>
           </div>
         </div>

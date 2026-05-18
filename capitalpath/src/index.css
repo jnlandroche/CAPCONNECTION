@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --navy-950: #050d1a;
-  --navy-900: #0a1628;
-  --navy-800: #0f2040;
-  --navy-700: #152a52;
-  --gold-400: #c9a84c;
-  --gold-300: #e0c97a;
+  --navy-950: #0b1d2d;
+  --navy-900: #0f2233;
+  --navy-800: #162c42;
+  --navy-700: #1e3550;
+  --blue-500: #2d5bff;
+  --gold-400: #d4af37;
+  --gold-300: #e8c84a;
 }
 
 * {
@@ -18,14 +19,14 @@
 body {
   background-color: var(--navy-950);
   color: #e2e8f0;
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: 'Poppins', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0a1628; }
-::-webkit-scrollbar-thumb { background: #254d94; border-radius: 3px; }
+::-webkit-scrollbar-track { background: #0f2233; }
+::-webkit-scrollbar-thumb { background: #2d5bff; border-radius: 3px; }
 
 /* Animations */
 @keyframes fadeInUp {
@@ -58,7 +59,7 @@ body {
 .delay-500 { animation-delay: 0.5s; }
 
 .gold-shimmer {
-  background: linear-gradient(90deg, #c9a84c 0%, #e0c97a 50%, #c9a84c 100%);
+  background: linear-gradient(90deg, #d4af37 0%, #e8c84a 50%, #d4af37 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -67,63 +68,58 @@ body {
 
 /* Card glass effect */
 .glass-card {
-  background: rgba(15, 32, 64, 0.6);
+  background: rgba(15, 34, 51, 0.7);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(37, 77, 148, 0.25);
+  border: 1px solid rgba(45, 91, 255, 0.15);
 }
 
 /* Table styles */
 .data-table th {
-  background: rgba(10, 22, 40, 0.8);
+  background: rgba(11, 29, 45, 0.9);
   color: #94a3b8;
   font-size: 0.7rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  font-family: 'DM Mono', monospace;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid rgba(37, 77, 148, 0.3);
+  border-bottom: 1px solid rgba(45, 91, 255, 0.2);
 }
 
 .data-table td {
   padding: 0.875rem 1rem;
-  border-bottom: 1px solid rgba(37, 77, 148, 0.15);
+  border-bottom: 1px solid rgba(45, 91, 255, 0.08);
   font-size: 0.875rem;
   color: #cbd5e1;
 }
 
 .data-table tr:hover td {
-  background: rgba(37, 77, 148, 0.1);
-}
-
-/* Score ring */
-.score-ring {
-  stroke-dasharray: 251.2;
-  transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(45, 91, 255, 0.06);
 }
 
 /* Input styles */
 .cp-input {
-  background: rgba(10, 22, 40, 0.8);
-  border: 1px solid rgba(37, 77, 148, 0.4);
+  background: rgba(11, 29, 45, 0.8);
+  border: 1px solid rgba(45, 91, 255, 0.25);
   color: #e2e8f0;
   border-radius: 6px;
   padding: 0.625rem 0.875rem;
   width: 100%;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.875rem;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .cp-input:focus {
   outline: none;
-  border-color: #c9a84c;
-  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.12);
+  border-color: #2d5bff;
+  box-shadow: 0 0 0 3px rgba(45, 91, 255, 0.12);
 }
 
 .cp-input::placeholder { color: #475569; }
 
 select.cp-input option {
-  background: #0a1628;
+  background: #0f2233;
   color: #e2e8f0;
 }
 
@@ -134,7 +130,7 @@ select.cp-input option {
 }
 
 .ticker-track {
-  animation: tickerScroll 30s linear infinite;
+  animation: tickerScroll 35s linear infinite;
   white-space: nowrap;
 }
 

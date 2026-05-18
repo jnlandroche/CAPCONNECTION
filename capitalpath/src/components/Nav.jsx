@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, TrendingUp, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const navLinks = [
   { label: 'Solutions', href: '/#solutions' },
   { label: 'Financing Request', href: '/intake' },
   { label: 'Document Upload', href: '/upload' },
   { label: 'Assessment', href: '/assessment' },
-  { label: 'Lender Comparison', href: '/lenders' },
+  { label: 'Lender Matches', href: '/lenders' },
 ];
 
 export default function Nav() {
@@ -27,18 +27,18 @@ export default function Nav() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-navy-950/95 backdrop-blur-md border-b border-navy-800/60 shadow-lg shadow-black/30'
+          ? 'bg-navy-950/96 backdrop-blur-md border-b border-white/6 shadow-lg shadow-black/30'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 bg-gradient-to-br from-gold-400 to-gold-500 rounded-sm flex items-center justify-center shadow-lg">
-            <TrendingUp size={16} className="text-navy-950" strokeWidth={2.5} />
+          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-md flex items-center justify-center shadow-lg shadow-blue-500/20 relative overflow-hidden">
+            <span className="text-white font-bold text-sm tracking-tight leading-none">BG</span>
           </div>
-          <span className="font-display font-600 text-white text-lg tracking-tight">
-            Capital<span className="text-gold-400">Path</span>
+          <span className="font-display font-semibold text-white text-lg tracking-tight">
+            Bank<span className="text-blue-400">Grade</span>
           </span>
         </Link>
 
@@ -63,15 +63,15 @@ export default function Nav() {
         <div className="hidden md:flex items-center gap-3">
           <Link
             to="/dashboard"
-            className="text-sm text-slate-400 hover:text-slate-200 transition-colors px-3 py-1.5"
+            className="text-sm text-slate-400 hover:text-white transition-colors px-3 py-1.5 font-medium"
           >
             Advisor Portal
           </Link>
           <Link
             to="/intake"
-            className="text-sm bg-gold-400 hover:bg-gold-300 text-navy-950 font-semibold px-4 py-2 rounded transition-all duration-200 shadow-md"
+            className="text-sm bg-blue-500 hover:bg-blue-400 text-white font-semibold px-4 py-2 rounded-md transition-all duration-200 shadow-md shadow-blue-500/25"
           >
-            Start Request
+            Get Your BankGrade
           </Link>
         </div>
 
@@ -92,7 +92,7 @@ export default function Nav() {
               key={link.href}
               to={link.href}
               onClick={() => setOpen(false)}
-              className="text-slate-300 hover:text-white py-2.5 text-sm border-b border-navy-800/50"
+              className="text-slate-300 hover:text-white py-2.5 text-sm border-b border-navy-800/50 font-medium"
             >
               {link.label}
             </Link>
@@ -100,16 +100,16 @@ export default function Nav() {
           <Link
             to="/dashboard"
             onClick={() => setOpen(false)}
-            className="text-slate-400 py-2.5 text-sm"
+            className="text-slate-400 py-2.5 text-sm font-medium"
           >
             Advisor Portal
           </Link>
           <Link
             to="/intake"
             onClick={() => setOpen(false)}
-            className="mt-2 bg-gold-400 text-navy-950 font-semibold text-center py-2.5 rounded text-sm"
+            className="mt-2 bg-blue-500 text-white font-semibold text-center py-2.5 rounded-md text-sm"
           >
-            Start Financing Request
+            Get Your BankGrade
           </Link>
         </div>
       )}
