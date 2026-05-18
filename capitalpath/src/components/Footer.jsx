@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { BankGradeIcon } from './BankGradeLogo';
 
 export default function Footer() {
   return (
@@ -8,9 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           <div className="md:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-7 h-7 bg-gradient-to-br from-blue-500 to-blue-600 rounded-md flex items-center justify-center">
-                <span className="text-white font-bold text-xs">BG</span>
-              </div>
+              <BankGradeIcon size={32} />
               <span className="font-display font-semibold text-white">Bank<span className="text-blue-400">Grade</span></span>
             </div>
             <p className="text-slate-500 text-xs leading-relaxed mb-2">

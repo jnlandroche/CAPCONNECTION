@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { BankGradeIcon } from './BankGradeLogo';
 
 const navLinks = [
   { label: 'Solutions', href: '/#solutions' },
@@ -34,10 +35,8 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-md flex items-center justify-center shadow-lg shadow-blue-500/20 relative overflow-hidden">
-            <span className="text-white font-bold text-sm tracking-tight leading-none">BG</span>
-          </div>
-          <span className="font-display font-semibold text-white text-lg tracking-tight">
+          <BankGradeIcon size={36} />
+          <span className="font-display font-semibold text-white text-lg tracking-tight leading-none">
             Bank<span className="text-blue-400">Grade</span>
           </span>
         </Link>
