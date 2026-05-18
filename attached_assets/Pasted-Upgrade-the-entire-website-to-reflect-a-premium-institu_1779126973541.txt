@@ -1,0 +1,195 @@
+Upgrade the entire website to reflect a premium institutional fintech brand called “BANKABLE”.
+
+OVERALL GOAL:
+Transform the site into a highly professional, institutional-grade middle-market lending and capital advisory platform focused on helping businesses understand how lenders evaluate them.
+
+The visual style should feel like:
+- Bloomberg Terminal meets modern fintech
+- Goldman Sachs / private equity professionalism
+- premium, sophisticated, executive-level trust
+- built for CFOs, CEOs, Controllers, PE firms, and privately held middle market companies
+
+DO NOT make it feel like:
+- a small business loan marketplace
+- cheap fintech
+- startup cartoon graphics
+- retail banking
+
+BRAND IDENTITY:
+Company Name: BANKABLE
+
+Core Value Proposition:
+“See Your Business the Way Lenders Do.”
+
+Alternative supporting copy:
+“Upload financials. Understand how lenders evaluate your business before approaching banks, private credit, or capital providers.”
+
+Design Theme:
+- dark navy background (#0B1F33)
+- white typography
+- muted metallic silver accents (#B7BDC7)
+- subtle gold accent (#C8A45D)
+- minimalistic, premium UI
+- smooth transitions and subtle animations
+- clean institutional typography
+
+LOGO INTEGRATION:
+Use the uploaded BANKABLE logo.
+
+Requirements:
+- place logo in upper left navigation
+- create a clean favicon from the icon
+- subtle hover animation
+- use the circular graph logo throughout the site as a trust mark
+
+HOMEPAGE REDESIGN:
+
+Create a premium hero section.
+
+Headline:
+“How Bankable Is Your Business?”
+
+Subheadline:
+Upload your financials and instantly understand how lenders, banks, and private credit providers evaluate your business.
+
+Primary CTA:
+Get My BankGrade™
+
+Secondary CTA:
+See Sample Report
+
+Hero Visual:
+Create an elegant dashboard preview showing:
+
+BANKABILITY SCORE: A-
+
+Estimated Debt Capacity:
+$18MM–$25MM
+
+Likely Financing Options:
+✓ Revolver
+✓ Acquisition Financing
+✓ Equipment Financing
+✓ Working Capital LOC
+
+Potential Concerns:
+⚠ Customer concentration
+⚠ Limited recurring revenue
+⚠ Working capital volatility
+
+Show a sophisticated institutional analytics dashboard.
+
+SECTION 2 — HOW IT WORKS
+
+Create a premium 4-step process:
+
+1. Upload Financials
+Securely upload:
+- financial statements
+- tax returns
+- debt schedules
+- AR/AP aging
+- ownership information
+
+2. Receive Your BankGrade™
+Get institutional-grade lender feedback.
+
+3. Understand Financing Eligibility
+See:
+- estimated debt capacity
+- likely lender appetite
+- leverage tolerance
+- financing structures
+
+4. Connect with Capital
+Optional access to lenders and financing solutions.
+
+SECTION 3 — FINANCING TYPES
+
+Create premium cards for:
+
+- Revolvers / LOC
+- Acquisition Financing
+- Equipment Financing
+- ABL
+- Sponsor Finance
+- Treasury Management
+- Commercial Real Estate
+- Private Credit
+- ESOP Financing
+
+Each card should have elegant hover animations.
+
+SECTION 4 — WHY BANKABLE
+
+Headline:
+Built by People Who Understand Credit
+
+Body copy:
+BANKABLE is designed around how real commercial lenders, credit committees, and institutional capital providers actually evaluate companies.
+
+Show elegant metrics:
+$10MM–$500MM Revenue Focus
+Middle Market Expertise
+Institutional Capital Insight
+Lender-Level Analytics
+
+SECTION 5 — SAMPLE REPORT
+
+Interactive mockup of a professional BankGrade™ report.
+
+Show:
+- score
+- strengths
+- weaknesses
+- debt capacity estimate
+- financing recommendations
+- lender fit analysis
+
+Make it look premium and downloadable.
+
+SECTION 6 — TRUST / SECURITY
+
+Professional institutional language:
+
+“Your financial data is encrypted and securely analyzed using institutional-grade standards.”
+
+Include:
+SOC-style trust indicators
+secure upload messaging
+privacy focus
+
+NAVIGATION:
+Home
+How It Works
+Solutions
+BankGrade™
+About
+Contact
+
+HEADER:
+Sticky institutional nav bar
+subtle blur effect on scroll
+
+FOOTER:
+Professional and understated.
+
+Add:
+Terms
+Privacy
+Contact
+LinkedIn
+Disclaimers
+
+IMPORTANT UX REQUIREMENTS:
+- fully responsive
+- fast loading
+- premium animations
+- elegant hover states
+- institutional feel
+- no cheesy fintech visuals
+- no bright startup colors
+- executive-level trust
+
+FINAL OBJECTIVE:
+The site should look like a company that could realistically raise venture capital and convince a $150MM revenue company CFO to upload financial statements.

@@ -8,15 +8,24 @@ export default {
     extend: {
       colors: {
         navy: {
-          950: '#0b1d2d',
-          900: '#0f2233',
-          800: '#162c42',
-          700: '#1e3550',
-          600: '#253d5c',
-          500: '#2d4a6e',
+          950: '#060D18',
+          900: '#0B1F33',
+          800: '#102844',
+          700: '#163258',
+          600: '#1C3C6A',
+          500: '#234A80',
         },
-        slate: {
-          750: '#1e2d3d',
+        silver: {
+          400: '#D0D4DC',
+          500: '#B7BDC7',
+          600: '#8A9099',
+          700: '#626A76',
+        },
+        gold: {
+          400: '#D4B876',
+          500: '#C8A45D',
+          600: '#A8843D',
+          700: '#886630',
         },
         blue: {
           600: '#1a3fd4',
@@ -24,16 +33,14 @@ export default {
           400: '#5279ff',
           100: '#dbe3ff',
         },
-        gold: {
-          400: '#d4af37',
-          500: '#b8962e',
-          300: '#e8c84a',
-        }
       },
       fontFamily: {
         display: ['Poppins', 'system-ui', 'sans-serif'],
         body: ['Poppins', 'system-ui', 'sans-serif'],
         mono: ['"DM Mono"', 'monospace'],
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       }
     },
   },

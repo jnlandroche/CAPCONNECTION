@@ -4,16 +4,16 @@ import { tickerData } from '../data/mockData';
 export default function Ticker() {
   const doubled = [...tickerData, ...tickerData];
   return (
-    <div className="bg-navy-950 border-b border-white/6 overflow-hidden h-9 flex items-center">
-      <div className="overflow-hidden flex-1 relative">
+    <div className="overflow-hidden h-8 flex items-center border-b" style={{ background: 'rgba(6,13,24,0.9)', borderColor: 'rgba(183,189,199,0.07)' }}>
+      <div className="overflow-hidden flex-1">
         <div className="ticker-track flex items-center">
           {doubled.map((item, i) => (
-            <span key={i} className="text-[11px] font-body text-slate-400 px-5 flex-shrink-0 flex items-center gap-5">
-              <span className="tracking-wide">
-                <span className="text-slate-500 font-normal">{item.label}&ensp;</span>
-                <span className="text-slate-300 font-medium">{item.value}</span>
+            <span key={i} className="text-[11px] px-5 flex-shrink-0 flex items-center gap-5">
+              <span className="tracking-wide flex items-center gap-1.5">
+                <span className="font-normal" style={{ color: '#525D6A' }}>{item.label}</span>
+                <span className="font-semibold font-mono" style={{ color: '#B7BDC7' }}>{item.value}</span>
               </span>
-              <span className="w-px h-3 bg-white/10 flex-shrink-0" />
+              <span className="w-px h-3 flex-shrink-0" style={{ background: 'rgba(183,189,199,0.1)' }} />
             </span>
           ))}
         </div>

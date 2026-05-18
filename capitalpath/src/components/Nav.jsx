@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { BankGradeIcon } from './BankGradeLogo';
 
 const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'How It Works', href: '/#how-it-works' },
   { label: 'Solutions', href: '/#solutions' },
-  { label: 'Get Your BankGrade', href: '/intake' },
-  { label: 'Upload Documents', href: '/upload' },
-  { label: 'BankGrade Report', href: '/assessment' },
-  { label: 'Financing Options', href: '/lenders' },
+  { label: 'BankGrade™', href: '/assessment' },
 ];
 
 export default function Nav() {
@@ -17,40 +15,41 @@ export default function Nav() {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 32);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const isActive = (href) => location.pathname === href;
+  useEffect(() => { setOpen(false); }, [location.pathname]);
+
+  const isActive = (href) => href === '/' ? location.pathname === '/' : location.pathname === href;
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-navy-950/96 backdrop-blur-md border-b border-white/6 shadow-lg shadow-black/30'
-          : 'bg-transparent'
-      }`}
-    >
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      scrolled ? 'bg-navy-900/95 backdrop-blur-md border-b border-white/6 shadow-xl shadow-black/30' : 'bg-transparent'
+    }`}>
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 group">
-          <BankGradeIcon size={36} />
-          <span className="font-display font-semibold text-white text-lg tracking-tight leading-none">
-            Bank<span className="text-blue-400">Grade</span>
-          </span>
+        <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
+          <img
+            src="/bankable-logo.png"
+            alt="BANKABLE"
+            className="h-9 w-auto object-contain"
+            style={{ filter: 'brightness(1.1)' }}
+          />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-0.5">
+        <nav className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               to={link.href}
-              className={`px-3.5 py-2 text-[13px] font-semibold tracking-wide transition-all duration-150 whitespace-nowrap ${
+              className={`px-4 py-2 text-[13px] font-medium tracking-wide transition-colors duration-150 whitespace-nowrap ${
                 isActive(link.href)
                   ? 'text-white'
-                  : 'text-slate-400 hover:text-white'
+                  : 'text-silver-600 hover:text-white'
               }`}
             >
               {link.label}
@@ -58,40 +57,40 @@ export default function Nav() {
           ))}
         </nav>
 
-        {/* CTA + Dashboard */}
+        {/* Right side */}
         <div className="hidden md:flex items-center gap-3">
           <Link
             to="/dashboard"
-            className="text-sm text-slate-400 hover:text-white transition-colors px-3 py-1.5 font-medium whitespace-nowrap"
+            className="text-[13px] text-silver-600 hover:text-white transition-colors font-medium px-3 py-1.5 whitespace-nowrap"
           >
-            Advisor Dashboard
+            Advisor Portal
           </Link>
           <Link
             to="/intake"
-            className="text-sm bg-blue-500 hover:bg-blue-400 text-white font-semibold px-4 py-2 rounded-md transition-all duration-200 shadow-md shadow-blue-500/25 whitespace-nowrap"
+            className="text-[13px] bg-gold-500 hover:bg-gold-400 text-navy-900 font-semibold px-5 py-2.5 rounded transition-all duration-200 whitespace-nowrap"
           >
-            Get Your BankGrade
+            Get My BankGrade™
           </Link>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile toggle */}
         <button
-          className="md:hidden text-slate-400 hover:text-white p-1"
+          className="lg:hidden text-silver-500 hover:text-white p-1 transition-colors"
           onClick={() => setOpen(!open)}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile drawer */}
       {open && (
-        <div className="md:hidden bg-navy-900/98 backdrop-blur-md border-b border-navy-800 px-6 py-4 flex flex-col gap-2 animate-fade-in">
+        <div className="lg:hidden bg-navy-900/98 backdrop-blur-md border-b border-white/6 px-6 py-5 flex flex-col gap-1 animate-fade-in">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               to={link.href}
               onClick={() => setOpen(false)}
-              className="text-slate-300 hover:text-white py-2.5 text-sm border-b border-navy-800/50 font-medium"
+              className="text-silver-400 hover:text-white py-2.5 text-sm font-medium border-b border-white/5 transition-colors"
             >
               {link.label}
             </Link>
@@ -99,16 +98,16 @@ export default function Nav() {
           <Link
             to="/dashboard"
             onClick={() => setOpen(false)}
-            className="text-slate-400 py-2.5 text-sm font-medium"
+            className="text-silver-600 py-2.5 text-sm font-medium"
           >
-            Advisor Dashboard
+            Advisor Portal
           </Link>
           <Link
             to="/intake"
             onClick={() => setOpen(false)}
-            className="mt-2 bg-blue-500 text-white font-semibold text-center py-2.5 rounded-md text-sm"
+            className="mt-3 bg-gold-500 text-navy-900 font-semibold text-center py-3 rounded text-sm"
           >
-            Get Your Free BankGrade
+            Get My BankGrade™
           </Link>
         </div>
       )}

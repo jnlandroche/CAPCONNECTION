@@ -1,17 +1,51 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Shield, BarChart2, Users, Clock, Building2, Landmark, Briefcase, TrendingUp, RotateCcw, Wrench, Home } from 'lucide-react';
+import {
+  ArrowRight, Shield, Lock, TrendingUp, BarChart2,
+  CheckCircle, AlertTriangle, Building2, Landmark,
+  Briefcase, RotateCcw, Wrench, Users, Clock,
+  CreditCard, Globe, Layers, PieChart,
+} from 'lucide-react';
 import Ticker from '../components/Ticker';
 
-const solutions = [
-  { icon: Briefcase, label: 'Acquisition Financing', desc: 'Debt structuring and bankability assessment for M&A in the $10M–$150M range.' },
-  { icon: RotateCcw, label: 'Refinancing', desc: 'Financing readiness review before approaching lenders for improved terms or extended maturities.' },
-  { icon: TrendingUp, label: 'Growth Capital', desc: 'Leverage your balance sheet for organic expansion with a clear lender-fit picture.' },
-  { icon: Wrench, label: 'Equipment Financing', desc: 'Asset-backed structures for capital equipment, fleet, and manufacturing capacity.' },
-  { icon: BarChart2, label: 'Recapitalization', desc: 'Balance sheet optimization through ownership restructuring and leverage analysis.' },
-  { icon: Home, label: 'Real Estate Financing', desc: 'Owner-operator and investor financing across CRE bridge, construction, and permanent debt.' },
-  { icon: Landmark, label: 'Working Capital', desc: 'ABL facilities, revolving credit, and borrowing base structures for operating liquidity.' },
-  { icon: Building2, label: 'Sponsor Finance', desc: 'Platform acquisitions, dividend recaps, and add-ons for PE-backed companies.' },
+const financingTypes = [
+  { icon: RotateCcw,  label: 'Revolvers / LOC',         desc: 'Flexible revolving credit and lines of credit for operating liquidity and working capital needs.' },
+  { icon: Briefcase,  label: 'Acquisition Financing',    desc: 'Senior and subordinated debt structures for M&A transactions from $10M to $250M.' },
+  { icon: Wrench,     label: 'Equipment Financing',      desc: 'Asset-backed lending for capital equipment, fleet, manufacturing, and technology assets.' },
+  { icon: Layers,     label: 'ABL / Asset-Based',        desc: 'Borrowing base facilities collateralized by receivables, inventory, and eligible assets.' },
+  { icon: Building2,  label: 'Sponsor Finance',          desc: 'Platform acquisitions, dividend recapitalizations, and add-on transactions for PE-backed companies.' },
+  { icon: Globe,      label: 'Treasury Management',      desc: 'Cash management, liquidity optimization, and hedging strategies for institutional borrowers.' },
+  { icon: Landmark,   label: 'Commercial Real Estate',   desc: 'Bridge, construction, and permanent debt for owner-operators and institutional investors.' },
+  { icon: PieChart,   label: 'Private Credit',           desc: 'Direct lending, mezzanine, and structured credit from institutional non-bank capital providers.' },
+  { icon: Users,      label: 'ESOP Financing',           desc: 'Leveraged ESOP transaction financing for ownership transitions and buyouts.' },
+];
+
+const steps = [
+  {
+    num: '01', title: 'Upload Financials',
+    items: ['Financial statements (3 years)', 'Business tax returns', 'Debt schedule', 'AR / AP aging', 'Ownership information'],
+    desc: 'Securely upload your financial data in a bank-grade encrypted environment. Your files are never shared without explicit written consent.'
+  },
+  {
+    num: '02', title: 'Receive Your BankGrade™',
+    desc: 'Our institutional credit framework evaluates your company the same way a commercial lender or credit committee would — producing a letter-grade score with detailed commentary.'
+  },
+  {
+    num: '03', title: 'Understand Financing Eligibility',
+    items: ['Estimated debt capacity', 'Likely lender appetite', 'Leverage tolerance range', 'Eligible financing structures'],
+    desc: 'Know precisely what capital you can access, from which type of lender, and at what terms — before you approach a single bank or credit fund.'
+  },
+  {
+    num: '04', title: 'Connect with Capital',
+    desc: 'Optionally engage a BANKABLE advisor to facilitate introductions to banks, direct lenders, and private credit providers aligned with your profile.'
+  },
+];
+
+const pillars = [
+  { value: '$10MM–$500MM', label: 'Revenue Focus' },
+  { value: '180+', label: 'Lender Relationships' },
+  { value: '94%', label: 'Term Sheet Rate' },
+  { value: '38 days', label: 'Avg. Time to Close' },
 ];
 
 const stats = [
@@ -21,127 +55,230 @@ const stats = [
   { value: '38 days', label: 'Avg. Time to Term Sheet' },
 ];
 
-const steps = [
-  { num: '01', title: 'Complete Financing Profile', desc: 'A structured intake covering your company, financials, and capital objectives.' },
-  { num: '02', title: 'Upload Financials Confidentially', desc: 'Encrypted and never shared without your explicit consent.' },
-  { num: '03', title: 'Receive Your BankGrade Report', desc: 'Grade, financing range, structures, pricing, risks, and next steps.' },
-  { num: '04', title: 'Review Lender Fit', desc: 'See which lender types align with your credit profile before going to market.' },
-  { num: '05', title: 'Request Advisor Guidance', desc: 'A BankGrade Advisor guides your capital raise from profile to close.' },
-];
+function HeroDashboard() {
+  return (
+    <div className="glass-card rounded-xl overflow-hidden shadow-2xl shadow-black/40" style={{ border: '1px solid rgba(200,164,93,0.15)' }}>
+      {/* Dashboard header */}
+      <div className="flex items-center justify-between px-5 py-3 border-b border-white/6" style={{ background: 'rgba(6,13,24,0.7)' }}>
+        <div className="flex items-center gap-2">
+          <img src="/bankable-logo.png" alt="BANKABLE" className="h-5 w-auto object-contain" style={{ filter: 'brightness(1.05)' }} />
+          <span className="text-[11px] font-semibold text-silver-500 tracking-wide">BankGrade™ Report</span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <div className="w-2 h-2 rounded-full bg-green-400" />
+          <span className="text-[10px] text-silver-600 font-medium">Live Analysis</span>
+        </div>
+      </div>
 
-const pillars = [
-  { icon: Shield, label: 'Confidential by Design', desc: 'Your data is never shared without explicit consent.' },
-  { icon: BarChart2, label: 'Institutional Standard', desc: 'Assessments grounded in real lender credit criteria.' },
-  { icon: Users, label: '180+ Lender Relationships', desc: 'Coverage across every structure, size, and lender type.' },
-  { icon: Clock, label: '38-Day Average', desc: 'From financing profile to executed term sheet.' },
-];
+      <div className="p-5">
+        {/* Company + Score */}
+        <div className="flex items-start justify-between mb-5">
+          <div>
+            <p className="text-[10px] font-semibold text-silver-600 tracking-widest uppercase mb-1">Meridian Capital Group</p>
+            <p className="text-xs text-silver-600">Industrial Distribution · $142M Revenue</p>
+          </div>
+          <div className="text-right">
+            <div className="inline-flex flex-col items-center justify-center w-16 h-16 rounded-xl border" style={{ background: 'rgba(200,164,93,0.08)', borderColor: 'rgba(200,164,93,0.25)' }}>
+              <span className="text-2xl font-bold leading-none" style={{ color: '#C8A45D' }}>A–</span>
+              <span className="text-[9px] text-silver-600 mt-0.5">Grade</span>
+            </div>
+          </div>
+        </div>
 
-const gradeScale = [
-  { grade: 'A',  label: 'Exceptional', sub: 'Multiple lender options at competitive terms', color: 'text-green-400', bar: 'bg-green-500', w: '92%' },
-  { grade: 'B+', label: 'Good',        sub: 'Bankable across most structures',              color: 'text-blue-400',  bar: 'bg-blue-500',  w: '75%' },
-  { grade: 'B',  label: 'Adequate',    sub: 'Financeable with a targeted lender strategy',  color: 'text-gold-400',  bar: 'bg-gold-400',  w: '58%' },
-  { grade: 'C+', label: 'Marginal',    sub: 'Requires credit improvement or restructuring', color: 'text-amber-400', bar: 'bg-amber-500', w: '38%' },
-  { grade: 'C',  label: 'Substandard', sub: 'Significant lender hesitation likely',         color: 'text-red-400',   bar: 'bg-red-500',   w: '20%' },
-];
+        {/* Key metrics */}
+        <div className="grid grid-cols-2 gap-2 mb-4">
+          {[
+            { label: 'Bank Readiness', value: '88 / 100' },
+            { label: 'Debt Capacity', value: '$18MM – $25MM' },
+            { label: 'Leverage Range', value: '3.5x – 4.5x EBITDA' },
+            { label: 'Pricing (Indicative)', value: 'SOFR + 200–275' },
+          ].map(m => (
+            <div key={m.label} className="rounded-lg px-3 py-2.5" style={{ background: 'rgba(6,13,24,0.5)', border: '1px solid rgba(183,189,199,0.07)' }}>
+              <p className="text-[9px] font-semibold text-silver-600 uppercase tracking-wide mb-0.5">{m.label}</p>
+              <p className="text-xs font-semibold text-white font-mono">{m.value}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Financing options */}
+        <div className="mb-3">
+          <p className="text-[10px] font-semibold text-silver-600 uppercase tracking-wide mb-2">Likely Financing Options</p>
+          <div className="space-y-1.5">
+            {['Revolving Line of Credit', 'Acquisition Financing', 'Equipment Financing', 'Working Capital LOC'].map(f => (
+              <div key={f} className="flex items-center gap-2">
+                <CheckCircle size={11} className="flex-shrink-0" style={{ color: '#C8A45D' }} />
+                <span className="text-xs text-silver-400">{f}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Concerns */}
+        <div className="pt-3 border-t border-white/5">
+          <p className="text-[10px] font-semibold text-silver-600 uppercase tracking-wide mb-2">Potential Concerns</p>
+          <div className="space-y-1.5">
+            {['Customer concentration', 'Limited recurring revenue', 'Working capital volatility'].map(c => (
+              <div key={c} className="flex items-center gap-2">
+                <AlertTriangle size={10} className="flex-shrink-0 text-amber-400" />
+                <span className="text-xs text-silver-500">{c}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Footer CTA */}
+      <div className="px-5 py-3 border-t border-white/5 flex items-center justify-between" style={{ background: 'rgba(6,13,24,0.4)' }}>
+        <p className="text-[10px] text-silver-600">Report generated · Confidential</p>
+        <span className="text-[10px] font-semibold px-2 py-1 rounded" style={{ background: 'rgba(200,164,93,0.12)', color: '#C8A45D' }}>Full Report Available</span>
+      </div>
+    </div>
+  );
+}
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-navy-950 pt-16">
+    <div className="min-h-screen bg-navy-900 pt-16">
       <Ticker />
 
       {/* ── Hero ── */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div
-            className="absolute inset-0 opacity-[0.022]"
-            style={{
-              backgroundImage: `linear-gradient(rgba(45,91,255,0.9) 1px, transparent 1px), linear-gradient(90deg, rgba(45,91,255,0.9) 1px, transparent 1px)`,
-              backgroundSize: '64px 64px',
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-navy-950" />
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-blue-500/7 rounded-full blur-[150px]" />
+          <div className="absolute inset-0 opacity-[0.018]" style={{
+            backgroundImage: 'linear-gradient(rgba(183,189,199,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(183,189,199,0.6) 1px, transparent 1px)',
+            backgroundSize: '72px 72px',
+          }} />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-navy-900" />
+          <div className="absolute top-1/3 left-1/4 w-[600px] h-[400px] rounded-full blur-[180px]" style={{ background: 'radial-gradient(ellipse, rgba(200,164,93,0.06) 0%, transparent 70%)' }} />
+          <div className="absolute top-1/4 right-1/4 w-[500px] h-[350px] rounded-full blur-[180px]" style={{ background: 'radial-gradient(ellipse, rgba(183,189,199,0.04) 0%, transparent 70%)' }} />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 pt-14 pb-12">
-          <div className="max-w-3xl">
-            <p className="text-[11px] font-semibold text-slate-500 tracking-[0.22em] uppercase mb-5 animate-fade-in">
-              Middle Market Corporate Lending Intelligence
-            </p>
-
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-[1.08] mb-6 animate-fade-in-up">
-              Know Your BankGrade{' '}
-              <br className="hidden lg:block" />
-              <span className="gold-shimmer">Before the Market Does.</span>
-            </h1>
-
-            <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-lg mb-8 animate-fade-in-up delay-100">
-              Confidential financing intelligence for middle market companies — bankability assessment, lender-fit analysis, and corporate lending guidance before you engage the market.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-3 animate-fade-in-up delay-200">
-              <Link
-                to="/intake"
-                className="inline-flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-400 text-white font-semibold text-sm px-6 py-3 rounded-md transition-all duration-200 shadow-lg shadow-blue-500/20"
-              >
-                Get Your Free BankGrade <ArrowRight size={15} />
-              </Link>
-              <Link
-                to="/assessment"
-                className="inline-flex items-center justify-center gap-2 text-slate-400 hover:text-white text-sm px-6 py-3 rounded-md transition-all duration-200 font-medium border border-white/8 hover:border-white/18"
-              >
-                View Sample Report
-              </Link>
-            </div>
-
-            <div className="mt-10 pt-8 border-t border-white/6 grid grid-cols-2 md:grid-cols-4 gap-6 animate-fade-in-up delay-300">
-              {stats.map((s) => (
-                <div key={s.label}>
-                  <div className="text-xl font-display font-semibold text-white mb-0.5">{s.value}</div>
-                  <div className="text-xs text-slate-500 tracking-wide">{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── What is a BankGrade ── */}
-      <section className="py-12 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div className="lg:pt-1">
-              <p className="text-[11px] font-semibold text-slate-500 tracking-[0.18em] uppercase mb-3">What is a BankGrade?</p>
-              <h2 className="font-display text-3xl text-white font-semibold mb-4 leading-tight">
-                Your credit profile, assessed<br />before lenders see it.
-              </h2>
-              <p className="text-slate-400 text-sm leading-relaxed mb-3">
-                A BankGrade is an institutional-quality financing readiness assessment — the same evaluation framework a credit committee applies when reviewing a deal. It tells you where your company stands, which structures you qualify for, and what lenders will require before a single diligence request is sent.
+        <div className="relative max-w-7xl mx-auto px-6 pt-14 pb-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left */}
+            <div>
+              <p className="text-[11px] font-semibold tracking-[0.22em] uppercase mb-5 animate-fade-in" style={{ color: '#C8A45D' }}>
+                Institutional Credit Intelligence
               </p>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Most middle market companies enter lender conversations without this context. BankGrade closes that information gap — confidentially, and at no cost.
+              <h1 className="font-display text-4xl md:text-5xl font-semibold text-white leading-[1.1] mb-5 animate-fade-in-up">
+                How Bankable Is<br />
+                <span className="gold-shimmer">Your Business?</span>
+              </h1>
+              <p className="text-sm md:text-base leading-relaxed mb-8 animate-fade-in-up delay-100" style={{ color: '#B7BDC7' }}>
+                Upload your financials and instantly understand how lenders, banks, and private credit providers evaluate your business — before you sit across the table from them.
               </p>
-            </div>
-
-            <div className="glass-card rounded-xl divide-y divide-white/5">
-              <div className="px-5 py-3">
-                <p className="text-[10px] font-semibold text-slate-500 tracking-[0.15em] uppercase">BankGrade Scale</p>
+              <div className="flex flex-col sm:flex-row gap-3 mb-10 animate-fade-in-up delay-200">
+                <Link to="/intake" className="inline-flex items-center justify-center gap-2 font-semibold text-sm px-6 py-3.5 rounded transition-all duration-200" style={{ background: '#C8A45D', color: '#0B1F33' }}>
+                  Get My BankGrade™ <ArrowRight size={15} />
+                </Link>
+                <Link to="/assessment" className="inline-flex items-center justify-center gap-2 text-sm px-6 py-3.5 rounded transition-all duration-200 font-medium border" style={{ borderColor: 'rgba(183,189,199,0.2)', color: '#B7BDC7' }}
+                  onMouseEnter={e => { e.currentTarget.style.color = 'white'; e.currentTarget.style.borderColor = 'rgba(183,189,199,0.4)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = '#B7BDC7'; e.currentTarget.style.borderColor = 'rgba(183,189,199,0.2)'; }}
+                >
+                  See Sample Report
+                </Link>
               </div>
-              {gradeScale.map((g) => (
-                <div key={g.grade} className="flex items-center gap-4 px-5 py-3">
-                  <span className={`text-xl font-display font-bold w-8 flex-shrink-0 ${g.color}`}>{g.grade}</span>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xs text-white font-semibold">{g.label}</span>
-                      {g.grade === 'B+' && (
-                        <span className="text-[9px] font-bold text-blue-400 border border-blue-500/40 px-1.5 py-0.5 rounded-sm tracking-wide uppercase">Sample</span>
-                      )}
-                    </div>
-                    <div className="w-full bg-navy-900 rounded-full h-0.5">
-                      <div className={`h-0.5 rounded-full ${g.bar}`} style={{ width: g.w }} />
-                    </div>
+
+              {/* Stats row */}
+              <div className="pt-8 border-t border-white/5 grid grid-cols-2 md:grid-cols-4 gap-5 animate-fade-in-up delay-300">
+                {stats.map(s => (
+                  <div key={s.label}>
+                    <div className="text-xl font-display font-semibold text-white mb-0.5">{s.value}</div>
+                    <div className="text-[11px] tracking-wide" style={{ color: '#8A9099' }}>{s.label}</div>
                   </div>
-                  <span className="text-[11px] text-slate-500 hidden lg:block w-36 text-right leading-snug">{g.sub}</span>
+                ))}
+              </div>
+            </div>
+
+            {/* Right — Dashboard mockup */}
+            <div className="animate-fade-in-up delay-200 lg:pl-4">
+              <HeroDashboard />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── How It Works ── */}
+      <section id="how-it-works" className="py-14 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-10">
+            <p className="text-[11px] font-semibold tracking-[0.2em] uppercase mb-2" style={{ color: '#C8A45D' }}>The Process</p>
+            <h2 className="font-display text-3xl font-semibold text-white">How It Works</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {steps.map((step, i) => (
+              <div key={step.num} className="glass-card rounded-xl p-6 flex flex-col gap-4 hover:border-gold-500/20 transition-all duration-300" style={{ borderColor: i === 0 ? 'rgba(200,164,93,0.15)' : undefined }}>
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl font-display font-bold" style={{ color: '#C8A45D', opacity: 0.7 }}>{step.num}</span>
+                  <h3 className="text-sm font-semibold text-white">{step.title}</h3>
+                </div>
+                <p className="text-xs leading-relaxed" style={{ color: '#8A9099' }}>{step.desc}</p>
+                {step.items && (
+                  <ul className="space-y-1.5 mt-auto">
+                    {step.items.map(item => (
+                      <li key={item} className="flex items-start gap-2 text-xs" style={{ color: '#B7BDC7' }}>
+                        <span className="mt-1 w-1 h-1 rounded-full flex-shrink-0" style={{ background: '#C8A45D' }} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Financing Types ── */}
+      <section id="solutions" className="py-14 border-t border-white/5" style={{ background: 'rgba(6,13,24,0.3)' }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-10">
+            <p className="text-[11px] font-semibold tracking-[0.2em] uppercase mb-2" style={{ color: '#C8A45D' }}>Capital Markets Coverage</p>
+            <h2 className="font-display text-3xl font-semibold text-white">Financing Structures</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-px" style={{ background: 'rgba(183,189,199,0.06)', borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(183,189,199,0.06)' }}>
+            {financingTypes.map((f) => (
+              <div key={f.label} className="p-6 group cursor-default transition-all duration-200" style={{ background: '#0B1F33' }}
+                onMouseEnter={e => e.currentTarget.style.background = 'rgba(16,40,68,0.9)'}
+                onMouseLeave={e => e.currentTarget.style.background = '#0B1F33'}
+              >
+                <div className="w-8 h-8 rounded border flex items-center justify-center mb-4 transition-all duration-200" style={{ borderColor: 'rgba(183,189,199,0.12)', background: 'rgba(6,13,24,0.6)' }}>
+                  <f.icon size={14} style={{ color: '#8A9099' }} />
+                </div>
+                <h3 className="text-sm font-semibold text-white mb-2">{f.label}</h3>
+                <p className="text-xs leading-relaxed" style={{ color: '#6B7785' }}>{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Why BANKABLE ── */}
+      <section className="py-14 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+            <div>
+              <p className="text-[11px] font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: '#C8A45D' }}>Why BANKABLE</p>
+              <h2 className="font-display text-3xl font-semibold text-white mb-4">
+                Built by people who<br />understand credit.
+              </h2>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: '#B7BDC7' }}>
+                BANKABLE is designed around how real commercial lenders, credit committees, and institutional capital providers actually evaluate companies — not how they describe it in a brochure.
+              </p>
+              <p className="text-sm leading-relaxed" style={{ color: '#6B7785' }}>
+                Our framework mirrors the underwriting standards used by regional banks, money center institutions, direct lenders, and private credit funds evaluating middle market borrowers between $10M and $500M in revenue.
+              </p>
+              <div className="mt-8">
+                <Link to="/intake" className="inline-flex items-center gap-2 text-sm font-semibold" style={{ color: '#C8A45D' }}>
+                  Start your BankGrade™ assessment <ArrowRight size={14} />
+                </Link>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {pillars.map(p => (
+                <div key={p.label} className="glass-card rounded-xl p-6 text-center">
+                  <div className="text-2xl font-display font-bold text-white mb-1">{p.value}</div>
+                  <div className="text-xs font-medium" style={{ color: '#8A9099' }}>{p.label}</div>
                 </div>
               ))}
             </div>
@@ -149,80 +286,47 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Solutions ── */}
-      <section id="solutions" className="py-12 border-t border-white/5">
+      {/* ── Trust / Security ── */}
+      <section className="py-14 border-t border-white/5" style={{ background: 'rgba(6,13,24,0.35)' }}>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 mb-6">
-            <div>
-              <p className="text-[11px] font-semibold text-slate-500 tracking-[0.18em] uppercase mb-2">Financing Structures</p>
-              <h2 className="font-display text-3xl text-white font-semibold">Corporate lending guidance across every structure</h2>
-            </div>
+          <div className="max-w-3xl mx-auto text-center mb-10">
+            <p className="text-[11px] font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: '#C8A45D' }}>Data Security</p>
+            <h2 className="font-display text-3xl font-semibold text-white mb-4">
+              Institutional-grade security.<br />No exceptions.
+            </h2>
+            <p className="text-sm leading-relaxed" style={{ color: '#B7BDC7' }}>
+              Your financial data is encrypted at rest and in transit using institutional-grade standards. Files are stored in isolated, access-controlled environments and never shared with any third party without your explicit written consent.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 rounded-xl overflow-hidden border border-white/5">
-            {solutions.map((sol) => (
-              <div key={sol.label} className="bg-navy-950 p-5 hover:bg-navy-900/50 transition-colors duration-200 group">
-                <div className="w-7 h-7 rounded border border-white/8 flex items-center justify-center mb-3 group-hover:border-blue-500/30 transition-colors">
-                  <sol.icon size={13} className="text-slate-500 group-hover:text-blue-400 transition-colors" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { icon: Lock, label: '256-bit AES Encryption', desc: 'At rest and in transit' },
+              { icon: Shield, label: 'SOC 2 Type II', desc: 'Compliance framework' },
+              { icon: CheckCircle, label: 'Zero-Share Default', desc: 'Never shared without consent' },
+              { icon: BarChart2, label: 'Institutional Standards', desc: 'Bank-level security protocols' },
+            ].map(t => (
+              <div key={t.label} className="glass-card rounded-xl p-5 text-center">
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center mx-auto mb-3" style={{ background: 'rgba(200,164,93,0.08)', border: '1px solid rgba(200,164,93,0.15)' }}>
+                  <t.icon size={16} style={{ color: '#C8A45D' }} />
                 </div>
-                <h3 className="text-white text-sm font-semibold mb-1.5">{sol.label}</h3>
-                <p className="text-slate-500 text-xs leading-relaxed">{sol.desc}</p>
+                <h3 className="text-sm font-semibold text-white mb-1">{t.label}</h3>
+                <p className="text-xs" style={{ color: '#6B7785' }}>{t.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── How it works ── */}
-      <section className="py-12 border-t border-white/5 bg-navy-900/25">
+      {/* ── Closing ── */}
+      <section className="py-14 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 mb-8">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
-              <p className="text-[11px] font-semibold text-slate-500 tracking-[0.18em] uppercase mb-2">The Process</p>
-              <h2 className="font-display text-3xl text-white font-semibold">From profile to term sheet</h2>
+              <p className="text-white font-semibold text-base mb-1">See your business the way lenders do.</p>
+              <p className="text-sm" style={{ color: '#6B7785' }}>Complete a financing profile and receive your BankGrade™ at no cost.</p>
             </div>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 relative">
-            <div className="hidden lg:block absolute top-6 left-[3rem] right-[3rem] h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
-            {steps.map((step) => (
-              <div key={step.num} className="relative flex lg:flex-col items-start gap-4 lg:gap-0">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-navy-950 border border-white/10 flex items-center justify-center z-10">
-                  <span className="text-slate-500 font-semibold text-xs">{step.num}</span>
-                </div>
-                <div className="lg:mt-4">
-                  <h3 className="text-white text-sm font-semibold mb-1.5">{step.title}</h3>
-                  <p className="text-slate-500 text-xs leading-relaxed">{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Pillars + closing CTA ── */}
-      <section className="py-12 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
-            {pillars.map((p) => (
-              <div key={p.label}>
-                <div className="w-8 h-8 rounded border border-white/8 flex items-center justify-center mb-3">
-                  <p.icon size={14} className="text-slate-500" />
-                </div>
-                <h3 className="text-white font-semibold text-sm mb-1">{p.label}</h3>
-                <p className="text-slate-500 text-xs leading-relaxed">{p.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div>
-              <p className="text-white font-semibold text-sm mb-0.5">Ready to know where you stand?</p>
-              <p className="text-slate-500 text-xs">Complete a financing profile and receive your BankGrade at no cost.</p>
-            </div>
-            <Link
-              to="/intake"
-              className="flex-shrink-0 inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-400 text-white font-semibold text-sm px-5 py-2.5 rounded-md transition-all shadow-md shadow-blue-500/15"
-            >
-              Get Your Free BankGrade <ArrowRight size={14} />
+            <Link to="/intake" className="flex-shrink-0 inline-flex items-center gap-2 font-semibold text-sm px-6 py-3 rounded transition-all duration-200" style={{ background: '#C8A45D', color: '#0B1F33' }}>
+              Get My BankGrade™ <ArrowRight size={14} />
             </Link>
           </div>
         </div>
