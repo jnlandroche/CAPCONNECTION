@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Upload, FileText, CheckCircle2, AlertCircle, Lock, Info } from 'lucide-react';
+import { Upload, FileText, CheckCircle2, Lock, Info } from 'lucide-react';
 
 const docTypes = [
   {
@@ -83,20 +83,20 @@ export default function UploadPage() {
     <div className="min-h-screen pt-24 pb-16 px-6">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="mb-2">
-          <p className="text-xs font-mono text-gold-400 tracking-[0.2em] uppercase mb-2">DOCUMENT CENTER</p>
+        <div className="mb-6">
+          <p className="text-xs font-semibold text-gold-400 tracking-wide uppercase mb-2">Document Center</p>
           <h1 className="font-display text-4xl text-white font-500">Secure Document Upload</h1>
           <p className="text-slate-400 text-sm mt-2">Upload required documents to enable full lender outreach. All files are encrypted at rest and in transit.</p>
         </div>
 
         {/* Security badge */}
-        <div className="flex items-center gap-4 my-6">
+        <div className="flex items-center gap-3 my-5">
           <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded-full px-4 py-1.5">
             <Lock size={12} className="text-green-400" />
-            <span className="text-green-400 text-xs font-mono tracking-wider">256-BIT AES ENCRYPTION</span>
+            <span className="text-green-400 text-xs font-medium">256-bit AES Encryption</span>
           </div>
           <div className="flex items-center gap-2 bg-navy-800/60 border border-navy-700 rounded-full px-4 py-1.5">
-            <span className="text-slate-400 text-xs font-mono tracking-wider">SOC 2 TYPE II COMPLIANT (MOCK)</span>
+            <span className="text-slate-400 text-xs font-medium">SOC 2 Type II Compliant</span>
           </div>
         </div>
 
@@ -120,7 +120,7 @@ export default function UploadPage() {
 
         {/* Required docs */}
         <div className="mb-8">
-          <h2 className="text-xs font-mono text-slate-400 tracking-[0.15em] uppercase mb-4">Required Documents</h2>
+          <h2 className="text-sm font-semibold text-slate-300 mb-4">Required Documents</h2>
           <div className="space-y-3">
             {required.map(doc => (
               <UploadCard
@@ -142,7 +142,8 @@ export default function UploadPage() {
 
         {/* Optional docs */}
         <div className="mb-10">
-          <h2 className="text-xs font-mono text-slate-400 tracking-[0.15em] uppercase mb-4">Supplemental Documents <span className="text-slate-600">(Optional)</span></h2>
+          <h2 className="text-sm font-semibold text-slate-300 mb-1">Supplemental Documents <span className="text-slate-500 font-normal">(Optional)</span></h2>
+          <p className="text-xs text-slate-500 mb-4">Supporting materials that strengthen your credit package.</p>
           <div className="space-y-3">
             {optional.map(doc => (
               <UploadCard
@@ -186,16 +187,16 @@ function UploadCard({ doc, upload, dragging, onDragOver, onDragLeave, onDrop, on
           <div className="flex items-center gap-2 mb-0.5">
             <h3 className="text-sm font-semibold text-white">{doc.label}</h3>
             {doc.required && !upload && (
-              <span className="text-[10px] font-mono text-gold-400 bg-gold-400/10 border border-gold-400/20 rounded px-1.5 py-0.5 tracking-wider">REQUIRED</span>
+              <span className="text-[10px] font-semibold text-gold-400 bg-gold-400/10 border border-gold-400/20 rounded px-1.5 py-0.5">Required</span>
             )}
           </div>
           <p className="text-xs text-slate-500 mb-3">{doc.desc}</p>
 
           {upload ? (
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded px-3 py-1.5 text-xs text-green-400 font-mono">
+              <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded px-3 py-1.5 text-xs text-green-400">
                 <CheckCircle2 size={12} />
-                <span className="truncate max-w-[200px]">{upload.name}</span>
+                <span className="truncate max-w-[200px] font-medium">{upload.name}</span>
                 <span className="text-green-500/60">· {formatSize(upload.size)}</span>
               </div>
               <button onClick={onBrowse} className="text-xs text-slate-500 hover:text-slate-300 transition-colors">Replace</button>
@@ -214,7 +215,7 @@ function UploadCard({ doc, upload, dragging, onDragOver, onDragLeave, onDrop, on
               <p className="text-xs text-slate-500">
                 Drag & drop or <span className="text-gold-400 underline">browse files</span>
               </p>
-              <p className="text-[10px] text-slate-600 mt-0.5">PDF, Excel, CSV, Word — max 50MB</p>
+              <p className="text-[10px] text-slate-600 mt-0.5">PDF, Excel, CSV, Word — max 50 MB</p>
             </div>
           )}
         </div>

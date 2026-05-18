@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { mockAssessment } from '../data/mockData';
-import { ArrowRight, AlertTriangle, CheckCircle, Info, TrendingUp, Shield, Users, ChevronRight } from 'lucide-react';
+import { ArrowRight, AlertTriangle, CheckCircle, TrendingUp, Shield, Users } from 'lucide-react';
 
 const severityColor = { High: 'text-red-400', Medium: 'text-amber-400', Low: 'text-blue-400' };
 const severityBg = { High: 'bg-red-500/10 border-red-500/25', Medium: 'bg-amber-500/10 border-amber-500/25', Low: 'bg-blue-500/10 border-blue-500/25' };
@@ -29,7 +29,7 @@ function ScoreRing({ score }) {
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <span className="text-3xl font-display font-600 text-white">{score}</span>
-        <span className="text-[10px] font-mono text-slate-400 tracking-wider uppercase mt-0.5">Score</span>
+        <span className="text-[10px] font-medium text-slate-400 uppercase mt-0.5">Score</span>
       </div>
     </div>
   );
@@ -43,7 +43,7 @@ function LikelihoodBar({ value }) {
       <div className="flex-1 bg-navy-900 rounded-full h-1">
         <div className={`h-1 rounded-full transition-all duration-700 ${colors[value] || 'bg-slate-500'}`} style={{ width: widths[value] || '30%' }} />
       </div>
-      <span className={`text-[11px] font-mono flex-shrink-0 ${value === 'High' ? 'text-green-400' : value === 'Moderate' ? 'text-gold-400' : 'text-slate-500'}`}>{value}</span>
+      <span className={`text-[11px] font-medium flex-shrink-0 ${value === 'High' ? 'text-green-400' : value === 'Moderate' ? 'text-gold-400' : 'text-slate-500'}`}>{value}</span>
     </div>
   );
 }
@@ -56,7 +56,7 @@ export default function AssessmentPage() {
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <p className="text-xs font-mono text-gold-400 tracking-[0.2em] uppercase mb-2">AI FINANCING ASSESSMENT</p>
+          <p className="text-xs font-semibold text-gold-400 tracking-wide uppercase mb-2">Financial Assessment</p>
           <h1 className="font-display text-4xl text-white font-500">Capital Fit Analysis</h1>
           <p className="text-slate-400 text-sm mt-1.5">Meridian Distribution Group · Intake ID CP-2024-001 · Generated {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
         </div>
@@ -67,19 +67,19 @@ export default function AssessmentPage() {
           <div className="flex-1 text-center md:text-left">
             <div className="flex items-center gap-3 justify-center md:justify-start mb-2">
               <span className="font-display text-3xl text-white font-500">{a.scoreLabel}</span>
-              <span className="text-xs font-mono bg-green-500/15 border border-green-500/30 text-green-400 px-2.5 py-1 rounded-full tracking-wider">BANKABLE</span>
+              <span className="text-xs font-semibold bg-green-500/15 border border-green-500/30 text-green-400 px-2.5 py-1 rounded-full">Bankable</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-lg">
               This company demonstrates a strong capital profile suitable for institutional lender engagement. EBITDA quality, revenue stability, and leverage headroom align with middle market credit standards. A well-prepared financing package is expected to attract competitive term sheets.
             </p>
           </div>
-          <div className="flex md:flex-col gap-6 md:gap-3 text-center">
+          <div className="flex md:flex-col gap-6 md:gap-4 text-center">
             <div>
-              <p className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">Leverage Range</p>
-              <p className="text-white font-semibold font-mono">{a.leverage.min} – {a.leverage.max}</p>
+              <p className="text-xs font-medium text-slate-500 mb-1">Leverage Range</p>
+              <p className="text-white font-semibold font-mono text-sm">{a.leverage.min} – {a.leverage.max}</p>
             </div>
             <div>
-              <p className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">Pricing Range</p>
+              <p className="text-xs font-medium text-slate-500 mb-1">Pricing Range</p>
               <p className="text-white font-semibold font-mono text-sm">{a.pricing.min}</p>
               <p className="text-slate-500 text-xs font-mono">to {a.pricing.max}</p>
             </div>
@@ -89,8 +89,8 @@ export default function AssessmentPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
           {/* Likely Structures */}
           <div className="glass-card rounded-xl p-6">
-            <h2 className="text-xs font-mono text-slate-400 tracking-[0.15em] uppercase mb-5 flex items-center gap-2">
-              <TrendingUp size={14} className="text-gold-400" /> Likely Capital Structures
+            <h2 className="text-sm font-semibold text-slate-200 mb-5 flex items-center gap-2">
+              <TrendingUp size={15} className="text-gold-400" /> Likely Capital Structures
             </h2>
             <div className="space-y-4">
               {a.structures.map((s) => (
@@ -107,14 +107,14 @@ export default function AssessmentPage() {
 
           {/* Covenant Expectations */}
           <div className="glass-card rounded-xl p-6">
-            <h2 className="text-xs font-mono text-slate-400 tracking-[0.15em] uppercase mb-5 flex items-center gap-2">
-              <Shield size={14} className="text-gold-400" /> Indicative Covenant Framework
+            <h2 className="text-sm font-semibold text-slate-200 mb-5 flex items-center gap-2">
+              <Shield size={15} className="text-gold-400" /> Indicative Covenant Framework
             </h2>
             <div className="space-y-3">
               {a.covenants.map((c, i) => (
                 <div key={i} className="flex items-center gap-3 p-3 bg-navy-900/60 rounded-lg border border-navy-800/50">
                   <div className="w-1.5 h-1.5 rounded-full bg-gold-400/60 flex-shrink-0" />
-                  <span className="text-sm text-slate-300 font-mono">{c}</span>
+                  <span className="text-sm text-slate-300">{c}</span>
                 </div>
               ))}
             </div>
@@ -130,14 +130,14 @@ export default function AssessmentPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
           {/* Key Risks */}
           <div className="glass-card rounded-xl p-6">
-            <h2 className="text-xs font-mono text-slate-400 tracking-[0.15em] uppercase mb-5 flex items-center gap-2">
-              <AlertTriangle size={14} className="text-gold-400" /> Key Credit Risks
+            <h2 className="text-sm font-semibold text-slate-200 mb-5 flex items-center gap-2">
+              <AlertTriangle size={15} className="text-gold-400" /> Key Credit Considerations
             </h2>
             <div className="space-y-3">
               {a.risks.map((r, i) => (
                 <div key={i} className={`flex items-start gap-3 p-3 rounded-lg border ${severityBg[r.severity]}`}>
-                  <span className={`text-[10px] font-mono font-600 px-1.5 py-0.5 rounded flex-shrink-0 mt-0.5 ${severityColor[r.severity]} bg-current/10 border border-current/30`}>
-                    {r.severity.toUpperCase()}
+                  <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded flex-shrink-0 mt-0.5 border ${severityColor[r.severity]} bg-current/10 border-current/30`}>
+                    {r.severity}
                   </span>
                   <div>
                     <p className="text-sm text-white font-medium mb-0.5">{r.label}</p>
@@ -150,15 +150,15 @@ export default function AssessmentPage() {
 
           {/* Lender Fit */}
           <div className="glass-card rounded-xl p-6">
-            <h2 className="text-xs font-mono text-slate-400 tracking-[0.15em] uppercase mb-5 flex items-center gap-2">
-              <Users size={14} className="text-gold-400" /> Lender Fit Profile
+            <h2 className="text-sm font-semibold text-slate-200 mb-5 flex items-center gap-2">
+              <Users size={15} className="text-gold-400" /> Lender Fit Profile
             </h2>
             <div className="space-y-3">
               {a.lenderFit.map((l, i) => (
                 <div key={i} className="p-3 bg-navy-900/60 rounded-lg border border-navy-800/50">
                   <div className="flex items-center justify-between mb-1">
                     <h3 className="text-sm text-white font-medium">{l.type}</h3>
-                    <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${fitColor[l.fit]}`}>{l.fit}</span>
+                    <span className={`text-[10px] font-semibold px-2 py-0.5 rounded border ${fitColor[l.fit]}`}>{l.fit}</span>
                   </div>
                   <p className="text-xs text-slate-500">{l.reason}</p>
                 </div>
@@ -169,13 +169,13 @@ export default function AssessmentPage() {
 
         {/* Recommendations */}
         <div className="glass-card rounded-xl p-6 mb-6">
-          <h2 className="text-xs font-mono text-slate-400 tracking-[0.15em] uppercase mb-5 flex items-center gap-2">
-            <CheckCircle size={14} className="text-gold-400" /> Preparation Recommendations
+          <h2 className="text-sm font-semibold text-slate-200 mb-5 flex items-center gap-2">
+            <CheckCircle size={15} className="text-gold-400" /> Preparation Recommendations
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {a.recommendations.map((rec, i) => (
               <div key={i} className="flex items-start gap-3 p-3 bg-navy-900/50 rounded-lg border border-navy-800/40">
-                <span className="w-5 h-5 rounded-full bg-gold-400/15 border border-gold-400/30 flex items-center justify-center text-[10px] font-mono text-gold-400 font-600 flex-shrink-0 mt-0.5">
+                <span className="w-5 h-5 rounded-full bg-gold-400/15 border border-gold-400/30 flex items-center justify-center text-[10px] font-bold text-gold-400 flex-shrink-0 mt-0.5">
                   {i + 1}
                 </span>
                 <p className="text-xs text-slate-300 leading-relaxed">{rec}</p>

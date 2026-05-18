@@ -39,7 +39,7 @@ export default function IntakePage() {
 
   const Input = ({ field, label, placeholder, type = 'text' }) => (
     <div>
-      <label className="block text-xs font-mono text-slate-400 tracking-wider uppercase mb-1.5">{label}</label>
+      <label className="block text-xs font-medium text-slate-400 mb-1.5">{label}</label>
       <input
         type={type}
         className="cp-input"
@@ -52,7 +52,7 @@ export default function IntakePage() {
 
   const Select = ({ field, label, options }) => (
     <div>
-      <label className="block text-xs font-mono text-slate-400 tracking-wider uppercase mb-1.5">{label}</label>
+      <label className="block text-xs font-medium text-slate-400 mb-1.5">{label}</label>
       <select className="cp-input" value={form[field]} onChange={e => update(field, e.target.value)}>
         <option value="">— Select —</option>
         {options.map(o => <option key={o} value={o}>{o}</option>)}
@@ -62,7 +62,7 @@ export default function IntakePage() {
 
   const Textarea = ({ field, label, placeholder, rows = 4 }) => (
     <div>
-      <label className="block text-xs font-mono text-slate-400 tracking-wider uppercase mb-1.5">{label}</label>
+      <label className="block text-xs font-medium text-slate-400 mb-1.5">{label}</label>
       <textarea
         className="cp-input resize-none"
         rows={rows}
@@ -89,7 +89,7 @@ export default function IntakePage() {
     // Step 1: Financials
     <div className="grid grid-cols-1 md:grid-cols-2 gap-5" key="step1">
       <div className="md:col-span-2 glass-card rounded-lg p-4 border-gold-400/15">
-        <p className="text-xs font-mono text-gold-400 tracking-wider uppercase mb-1">Guidance</p>
+        <p className="text-xs font-semibold text-gold-400 mb-1">Guidance</p>
         <p className="text-xs text-slate-400">Enter your most recent full fiscal year (or trailing twelve months). All figures in USD.</p>
       </div>
       <Input field="revenue" label="Annual Revenue (TTM)" placeholder="$42,000,000" />
@@ -141,7 +141,7 @@ export default function IntakePage() {
     // Step 4: Summary
     <div key="step4" className="space-y-4">
       <div className="glass-card rounded-lg p-6">
-        <h3 className="text-sm font-mono text-gold-400 tracking-wider uppercase mb-4">Intake Summary</h3>
+        <h3 className="text-sm font-semibold text-white mb-4">Intake Summary</h3>
         <div className="grid grid-cols-2 gap-x-8 gap-y-3">
           {[
             ['Company', form.companyName || '—'],
@@ -154,7 +154,7 @@ export default function IntakePage() {
             ['Current Lender', form.currentLender || '—'],
           ].map(([k, v]) => (
             <div key={k}>
-              <span className="text-xs font-mono text-slate-500 tracking-wider uppercase">{k}</span>
+              <span className="text-xs font-medium text-slate-500">{k}</span>
               <p className="text-sm text-white mt-0.5">{v}</p>
             </div>
           ))}
@@ -162,7 +162,7 @@ export default function IntakePage() {
       </div>
       {form.narrative && (
         <div className="glass-card rounded-lg p-5">
-          <p className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-2">Transaction Narrative</p>
+          <p className="text-xs font-medium text-slate-500 mb-2">Transaction Narrative</p>
           <p className="text-sm text-slate-300 leading-relaxed">{form.narrative}</p>
         </div>
       )}
@@ -204,8 +204,8 @@ export default function IntakePage() {
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <p className="text-xs font-mono text-gold-400 tracking-[0.2em] uppercase mb-2">BORROWER INTAKE</p>
-          <h1 className="font-display text-4xl text-white font-500">Financing Request</h1>
+          <p className="text-xs font-semibold text-gold-400 tracking-wide uppercase mb-2">Financing Request</p>
+          <h1 className="font-display text-4xl text-white font-500">Tell us about your company</h1>
           <p className="text-slate-400 text-sm mt-2">Complete all sections for the most accurate capital assessment.</p>
         </div>
 
@@ -216,7 +216,7 @@ export default function IntakePage() {
               <div className="flex items-center gap-2 flex-shrink-0">
                 <button
                   onClick={() => i <= step && setStep(i)}
-                  className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-mono font-500 transition-all ${
+                  className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold transition-all ${
                     i < step ? 'bg-green-500/20 border border-green-500/50 text-green-400' :
                     i === step ? 'bg-gold-400 text-navy-950' :
                     'bg-navy-800 border border-navy-700 text-slate-500'
@@ -224,7 +224,7 @@ export default function IntakePage() {
                 >
                   {i < step ? <Check size={12} /> : i + 1}
                 </button>
-                <span className={`text-xs font-mono hidden sm:block ${i === step ? 'text-white' : 'text-slate-600'}`}>
+                <span className={`text-xs hidden sm:block font-medium ${i === step ? 'text-white' : 'text-slate-600'}`}>
                   {s}
                 </span>
               </div>
@@ -237,8 +237,8 @@ export default function IntakePage() {
 
         {/* Step card */}
         <div className="glass-card rounded-xl p-6 md:p-8 mb-6 animate-fade-in">
-          <h2 className="text-white font-semibold mb-6 flex items-center gap-2">
-            <span className="text-gold-400 font-mono text-sm">{String(step + 1).padStart(2, '0')}</span>
+          <h2 className="text-white font-semibold mb-6 flex items-center gap-2.5">
+            <span className="w-6 h-6 rounded-full bg-gold-400/15 border border-gold-400/30 flex items-center justify-center text-[11px] font-bold text-gold-400">{step + 1}</span>
             {steps[step]}
           </h2>
           {stepContent[step]}
