@@ -33,10 +33,10 @@ export default function Nav() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
           <img
-            src="/bankable-logo.png"
+            src="/bankable-logo-cropped.png"
             alt="BANKABLE"
-            className="h-9 w-auto object-contain"
-            style={{ filter: 'brightness(1.1)' }}
+            className="w-auto object-contain"
+            style={{ filter: 'brightness(1.1)', height: '42px' }}
           />
         </Link>
 
