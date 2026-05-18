@@ -8,10 +8,14 @@ import UploadPage from './pages/UploadPage';
 import AssessmentPage from './pages/AssessmentPage';
 import LendersPage from './pages/LendersPage';
 import DashboardPage from './pages/DashboardPage';
+import OGImagePage from './pages/OGImagePage';
 
 function Layout() {
   const location = useLocation();
   const isDashboard = location.pathname === '/dashboard';
+  const isOG = location.pathname === '/og';
+
+  if (isOG) return <OGImagePage />;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -24,6 +28,7 @@ function Layout() {
           <Route path="/assessment" element={<AssessmentPage />} />
           <Route path="/lenders" element={<LendersPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/og" element={<OGImagePage />} />
         </Routes>
       </main>
       {!isDashboard && <Footer />}
