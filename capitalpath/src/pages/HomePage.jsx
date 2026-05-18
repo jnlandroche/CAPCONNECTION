@@ -23,7 +23,7 @@ const stats = [
 
 const steps = [
   { num: '01', title: 'Submit Intake', desc: 'Complete a structured financing request covering your company profile, financials, and capital objectives.' },
-  { num: '02', title: 'AI Assessment', desc: 'Receive an institutional-grade Capital Fit Score with structure analysis, pricing guidance, and lender fit.' },
+  { num: '02', title: 'Financial Assessment', desc: 'Receive an institutional-grade Capital Fit Score with structure analysis, pricing guidance, and lender fit.' },
   { num: '03', title: 'Upload Documents', desc: 'Securely share financials, tax returns, projections, and deal documents in a bank-ready data room.' },
   { num: '04', title: 'Lender Outreach', desc: 'We engage our network of 180+ banks, credit funds, and direct lenders on your behalf.' },
   { num: '05', title: 'Compare Terms', desc: 'Review structured lender responses side-by-side and select the optimal capital structure.' },
@@ -66,7 +66,7 @@ export default function HomePage() {
             </h1>
 
             <p className="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mb-10 animate-fade-in-up delay-100">
-              CapitalPath prepares middle market companies for institutional debt markets — with AI-powered assessments, structured lender outreach, and term sheet comparison. Close faster. Borrow smarter.
+              CapitalPath prepares middle market companies for institutional debt markets — with institutional-grade financial assessments, structured lender outreach, and term sheet comparison. Close faster. Borrow smarter.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 animate-fade-in-up delay-200">

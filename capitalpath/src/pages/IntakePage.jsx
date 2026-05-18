@@ -169,7 +169,7 @@ export default function IntakePage() {
       <div className="glass-card rounded-lg p-4 border-gold-400/20">
         <p className="text-xs text-slate-400 leading-relaxed">
           <span className="text-gold-400 font-semibold">Prototype Notice: </span>
-          This intake will not be transmitted to any lender or advisor. Submitting will route you to a mock AI Assessment demonstrating the CapitalPath analysis output.
+          This intake will not be transmitted to any lender or advisor. Submitting will route you to a mock Financial Assessment demonstrating the CapitalPath analysis output.
         </p>
       </div>
     </div>,
@@ -184,7 +184,7 @@ export default function IntakePage() {
           </div>
           <h2 className="font-display text-3xl text-white mb-3">Intake Received</h2>
           <p className="text-slate-400 text-sm mb-8 leading-relaxed">
-            Your financing request for <strong className="text-white">{form.companyName || 'your company'}</strong> has been submitted. Your AI Assessment is ready.
+            Your financing request for <strong className="text-white">{form.companyName || 'your company'}</strong> has been submitted. Your Financial Assessment is ready.
           </p>
           <div className="flex gap-3 justify-center">
             <Link to="/assessment" className="bg-gold-400 hover:bg-gold-300 text-navy-950 font-semibold text-sm px-6 py-3 rounded transition-all flex items-center gap-2">

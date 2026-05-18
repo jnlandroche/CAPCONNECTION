@@ -21,7 +21,7 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-mono tracking-widest text-slate-500 uppercase mb-4">Platform</h4>
             <ul className="space-y-2.5">
-              {[['Financing Request', '/intake'], ['Document Upload', '/upload'], ['AI Assessment', '/assessment'], ['Lender Comparison', '/lenders']].map(([label, href]) => (
+              {[['Financing Request', '/intake'], ['Document Upload', '/upload'], ['Financial Assessment', '/assessment'], ['Lender Comparison', '/lenders']].map(([label, href]) => (
                 <li key={href}>
                   <Link to={href} className="text-sm text-slate-400 hover:text-white transition-colors">{label}</Link>
                 </li>
