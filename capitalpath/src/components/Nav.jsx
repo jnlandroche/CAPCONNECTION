@@ -43,15 +43,15 @@ export default function Nav() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-0.5">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               to={link.href}
-              className={`px-3.5 py-1.5 rounded text-sm font-body transition-all duration-150 ${
+              className={`px-4 py-2 text-[13px] font-semibold tracking-wide transition-all duration-150 ${
                 isActive(link.href)
-                  ? 'text-gold-400 bg-gold-400/8'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
+                  ? 'text-white'
+                  : 'text-slate-400 hover:text-white'
               }`}
             >
               {link.label}
