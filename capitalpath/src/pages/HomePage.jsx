@@ -31,11 +31,11 @@ const steps = [
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-navy-950">
+    <div className="min-h-screen bg-navy-950 pt-16">
       <Ticker />
 
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+      <section className="relative flex items-center overflow-hidden">
         {/* Background grid */}
         <div className="absolute inset-0 pointer-events-none">
           <div
@@ -50,7 +50,7 @@ export default function HomePage() {
           <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-gold-400/5 rounded-full blur-[100px]" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 py-24">
+        <div className="relative max-w-7xl mx-auto px-6 py-16">
           <div className="max-w-4xl">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-gold-400/10 border border-gold-400/25 rounded-full px-4 py-1.5 mb-8 animate-fade-in">
@@ -86,7 +86,7 @@ export default function HomePage() {
             </div>
 
             {/* Stat row */}
-            <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 animate-fade-in-up delay-300">
+            <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 animate-fade-in-up delay-300">
               {stats.map((s) => (
                 <div key={s.label}>
                   <div className="text-2xl font-display font-600 text-white mb-1">{s.value}</div>
@@ -99,9 +99,9 @@ export default function HomePage() {
       </section>
 
       {/* Solutions grid */}
-      <section id="solutions" className="py-24 border-t border-navy-800/40">
+      <section id="solutions" className="py-14 border-t border-navy-800/40">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-12">
+          <div className="mb-8">
             <p className="text-xs font-mono text-gold-400 tracking-[0.2em] uppercase mb-3">FINANCING SOLUTIONS</p>
             <h2 className="font-display text-4xl text-white font-500">
               Capital structures for every<br />stage of growth
@@ -126,9 +126,9 @@ export default function HomePage() {
       </section>
 
       {/* How it works */}
-      <section className="py-24 bg-navy-900/30 border-y border-navy-800/30">
+      <section className="py-14 bg-navy-900/30 border-y border-navy-800/30">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-12">
+          <div className="mb-8">
             <p className="text-xs font-mono text-gold-400 tracking-[0.2em] uppercase mb-3">HOW IT WORKS</p>
             <h2 className="font-display text-4xl text-white font-500">Bank-ready in five steps</h2>
           </div>
@@ -155,7 +155,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Banner */}
-      <section className="py-20">
+      <section className="py-14">
         <div className="max-w-7xl mx-auto px-6">
           <div className="relative rounded-xl overflow-hidden glass-card border-gold-400/20 p-12 text-center">
             <div className="absolute inset-0 bg-gradient-to-r from-navy-800/40 via-transparent to-navy-800/40" />
