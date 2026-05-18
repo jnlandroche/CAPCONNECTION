@@ -12,17 +12,20 @@ export default function Footer() {
               <BankGradeIcon size={32} />
               <span className="font-display font-semibold text-white">Bank<span className="text-blue-400">Grade</span></span>
             </div>
-            <p className="text-slate-500 text-xs leading-relaxed mb-2">
-              Know Your BankGrade. Finance with Confidence.
-            </p>
+            <p className="text-slate-500 text-xs leading-relaxed mb-1">Know Your BankGrade. Finance with Confidence.</p>
             <p className="text-slate-600 text-xs leading-relaxed">
-              Institutional-grade financing intelligence for middle market companies. Prototype only — not a licensed financial advisor.
+              Middle market financing intelligence and corporate lending guidance. Prototype only — not a licensed financial advisor.
             </p>
           </div>
           <div>
             <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-4">Platform</h4>
             <ul className="space-y-2.5">
-              {[['Financing Request', '/intake'], ['Document Upload', '/upload'], ['Financial Assessment', '/assessment'], ['Lender Matches', '/lenders']].map(([label, href]) => (
+              {[
+                ['Get Your BankGrade', '/intake'],
+                ['Upload Documents', '/upload'],
+                ['BankGrade Report', '/assessment'],
+                ['Financing Options', '/lenders'],
+              ].map(([label, href]) => (
                 <li key={label}>
                   <Link to={href} className="text-sm text-slate-400 hover:text-white transition-colors font-medium">{label}</Link>
                 </li>
@@ -30,9 +33,9 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-4">Solutions</h4>
+            <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-4">Financing Types</h4>
             <ul className="space-y-2.5">
-              {['Acquisition Finance', 'Growth Capital', 'Recapitalization', 'Equipment Lines', 'Real Estate', 'Working Capital'].map(s => (
+              {['Acquisition Financing', 'Growth Capital', 'Recapitalization', 'Equipment Lines', 'Working Capital', 'Refinancing'].map(s => (
                 <li key={s} className="text-sm text-slate-400 font-medium">{s}</li>
               ))}
             </ul>
@@ -40,7 +43,10 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-4">Advisory</h4>
             <ul className="space-y-2.5">
-              {[['Advisor Dashboard', '/dashboard'], ['Lender Network', '/lenders']].map(([label, href]) => (
+              {[
+                ['BankGrade Advisor Dashboard', '/dashboard'],
+                ['Financing Options', '/lenders'],
+              ].map(([label, href]) => (
                 <li key={label}>
                   <Link to={href} className="text-sm text-slate-400 hover:text-white transition-colors font-medium">{label}</Link>
                 </li>
@@ -48,7 +54,16 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="border-t border-white/6 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+
+        {/* Disclaimer */}
+        <div className="border-t border-white/6 pt-6 mb-4">
+          <p className="text-slate-600 text-xs leading-relaxed max-w-4xl">
+            <span className="text-slate-500 font-semibold">Disclaimer: </span>
+            BankGrade reports are provided for informational purposes only and do not represent a commitment to lend, offer of credit, or formal credit approval. All data and assessments are illustrative and based on mock information. BankGrade is a prototype platform and does not constitute financial, legal, or investment advice.
+          </p>
+        </div>
+
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-600 text-xs">© 2025 BankGrade · Prototype · Not financial advice</p>
           <div className="flex gap-6">
             {['Privacy', 'Terms', 'Disclosures'].map(l => (

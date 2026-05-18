@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { mockLenders } from '../data/mockData';
-import { Download } from 'lucide-react';
+import { Download, MessageSquare } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const statusStyles = {
   'Term Sheet': 'bg-green-500/15 text-green-400 border-green-500/30',
@@ -22,14 +23,17 @@ export default function LendersPage() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
-            <p className="text-xs font-semibold text-blue-400 tracking-wide uppercase mb-2">Lender Response Tracking</p>
-            <h1 className="font-display text-4xl text-white font-semibold">Lender Matches</h1>
-            <p className="text-slate-400 text-sm mt-1.5">Meridian Distribution Group · $55M Senior Financing · Active Outreach</p>
+            <p className="text-xs font-semibold text-blue-400 tracking-wide uppercase mb-2">Lender-Fit Intelligence</p>
+            <h1 className="font-display text-4xl text-white font-semibold">Financing Options</h1>
+            <p className="text-slate-400 text-sm mt-1.5">Meridian Distribution Group · $55M Senior Financing · BankGrade B+ · Active Outreach</p>
           </div>
           <div className="flex items-center gap-2">
             <button className="flex items-center gap-2 text-xs font-medium text-slate-400 hover:text-white border border-white/10 hover:border-white/20 px-3 py-2 rounded-md transition-all">
               <Download size={13} /> Export
             </button>
+            <Link to="/intake" className="flex items-center gap-2 text-xs font-medium text-white bg-blue-500 hover:bg-blue-400 px-3 py-2 rounded-md transition-all">
+              <MessageSquare size={13} /> Speak with a BankGrade Advisor
+            </Link>
           </div>
         </div>
 
@@ -64,7 +68,7 @@ export default function LendersPage() {
         </div>
 
         {/* Desktop table */}
-        <div className="glass-card rounded-xl overflow-hidden hidden md:block">
+        <div className="glass-card rounded-xl overflow-hidden hidden md:block mb-6">
           <table className="w-full data-table">
             <thead>
               <tr>
@@ -104,7 +108,7 @@ export default function LendersPage() {
         </div>
 
         {/* Mobile cards */}
-        <div className="md:hidden space-y-3">
+        <div className="md:hidden space-y-3 mb-6">
           {filtered.map(lender => (
             <div key={lender.id} className="glass-card rounded-xl p-5">
               <div className="flex items-start justify-between mb-3">
@@ -132,11 +136,22 @@ export default function LendersPage() {
           ))}
         </div>
 
+        {/* Advisor CTA */}
+        <div className="glass-card rounded-xl p-5 mb-4 border-blue-500/15 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <p className="text-white font-semibold text-sm">Want help evaluating these options?</p>
+            <p className="text-slate-400 text-xs mt-0.5">A BankGrade Advisor can help you identify the right lenders and navigate the process from start to close.</p>
+          </div>
+          <Link to="/intake" className="flex-shrink-0 text-sm bg-blue-500 hover:bg-blue-400 text-white font-semibold px-5 py-2.5 rounded-md transition-all flex items-center gap-2">
+            <MessageSquare size={14} /> Speak with a BankGrade Advisor
+          </Link>
+        </div>
+
         {/* Disclosure */}
-        <div className="mt-6 glass-card rounded-lg p-4 border-blue-500/10">
+        <div className="glass-card rounded-lg p-4 border-blue-500/10">
           <p className="text-xs text-slate-500 leading-relaxed">
             <span className="font-semibold text-slate-400">Disclosure: </span>
-            All lender responses are illustrative data for prototype purposes. Indicative terms do not represent actual loan offers. Pricing indexed to SOFR as of illustration date. Actual terms subject to credit approval, due diligence, and market conditions.
+            All lender responses are illustrative data for prototype purposes only. Indicative terms do not represent a commitment to lend, offer of credit, or formal credit approval. Pricing indexed to SOFR as of illustration date. Actual terms subject to credit approval, due diligence, and market conditions.
           </p>
         </div>
       </div>

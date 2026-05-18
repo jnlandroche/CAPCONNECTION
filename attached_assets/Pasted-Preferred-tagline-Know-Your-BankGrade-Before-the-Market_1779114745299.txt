@@ -1,0 +1,74 @@
+Preferred tagline:
+“Know Your BankGrade Before the Market Does.”
+
+Secondary motto:
+“Finance with Confidence.”
+
+Update homepage hero:
+Headline:
+“Know Your BankGrade Before the Market Does.”
+
+Subheadline:
+“Confidential financing intelligence for middle market companies seeking acquisition financing, refinancing, working capital, equipment financing, growth capital, and recapitalizations.”
+
+Primary CTA:
+“Get Your Free BankGrade”
+
+Secondary CTA:
+“See Sample Report”
+
+Update site language:
+Do not position this as a generic lending marketplace.
+Position it as:
+- Bankability assessment
+- Financing readiness
+- Lender-fit intelligence
+- Corporate lending guidance
+- Middle market financing intelligence
+
+Main user flow:
+1. Company completes financing profile
+2. Company uploads financials confidentially
+3. Platform generates a free BankGrade report
+4. Report shows grade, eligible financing range, likely structures, pricing range, risks, and next steps
+5. Company can request advisor help to identify potential lenders
+
+Rename sections:
+- “Borrower Portal” → “Get Your BankGrade”
+- “AI Assessment” → “Your BankGrade Report”
+- “Lender Term Comparison” → “Financing Options”
+- “Advisor Dashboard” → “BankGrade Advisor Dashboard”
+
+Report screen should show:
+- Overall BankGrade: B+
+- Bank Readiness Score: 82/100
+- Indicative Financing Capacity: $18MM – $28MM
+- Likely structures:
+  - Revolving Line of Credit
+  - Term Loan
+  - Acquisition Financing
+  - Equipment Financing
+- Indicative pricing:
+  - SOFR + 225 – 325 bps
+- Key credit strengths:
+  - Consistent revenue growth
+  - Strong gross margins
+  - Positive cash flow
+- Primary credit risks:
+  - Customer concentration
+  - Leverage slightly elevated
+  - Working capital seasonality
+- Recommended next steps:
+  - Normalize EBITDA
+  - Strengthen monthly reporting
+  - Improve working capital efficiency
+
+Update buttons:
+- “Generate Financing Assessment” → “Generate My BankGrade”
+- “Prepare Lender Package” → “Explore Financing Options”
+- “Request Advisor Call” → “Speak with a BankGrade Advisor”
+
+Add a disclaimer in footer:
+“BankGrade reports are provided for informational purposes only and do not represent a commitment to lend, offer of credit, or formal credit approval.”
+
+Make the site fully responsive and preserve all existing functionality. Use mock data only. Do not conne

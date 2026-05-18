@@ -5,10 +5,10 @@ import { BankGradeIcon } from './BankGradeLogo';
 
 const navLinks = [
   { label: 'Solutions', href: '/#solutions' },
-  { label: 'Financing Request', href: '/intake' },
-  { label: 'Document Upload', href: '/upload' },
-  { label: 'Assessment', href: '/assessment' },
-  { label: 'Lender Matches', href: '/lenders' },
+  { label: 'Get Your BankGrade', href: '/intake' },
+  { label: 'Upload Documents', href: '/upload' },
+  { label: 'BankGrade Report', href: '/assessment' },
+  { label: 'Financing Options', href: '/lenders' },
 ];
 
 export default function Nav() {
@@ -42,12 +42,12 @@ export default function Nav() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-0.5">
+        <nav className="hidden lg:flex items-center gap-0.5">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               to={link.href}
-              className={`px-4 py-2 text-[13px] font-semibold tracking-wide transition-all duration-150 ${
+              className={`px-3.5 py-2 text-[13px] font-semibold tracking-wide transition-all duration-150 whitespace-nowrap ${
                 isActive(link.href)
                   ? 'text-white'
                   : 'text-slate-400 hover:text-white'
@@ -62,13 +62,13 @@ export default function Nav() {
         <div className="hidden md:flex items-center gap-3">
           <Link
             to="/dashboard"
-            className="text-sm text-slate-400 hover:text-white transition-colors px-3 py-1.5 font-medium"
+            className="text-sm text-slate-400 hover:text-white transition-colors px-3 py-1.5 font-medium whitespace-nowrap"
           >
-            Advisor Portal
+            Advisor Dashboard
           </Link>
           <Link
             to="/intake"
-            className="text-sm bg-blue-500 hover:bg-blue-400 text-white font-semibold px-4 py-2 rounded-md transition-all duration-200 shadow-md shadow-blue-500/25"
+            className="text-sm bg-blue-500 hover:bg-blue-400 text-white font-semibold px-4 py-2 rounded-md transition-all duration-200 shadow-md shadow-blue-500/25 whitespace-nowrap"
           >
             Get Your BankGrade
           </Link>
@@ -101,14 +101,14 @@ export default function Nav() {
             onClick={() => setOpen(false)}
             className="text-slate-400 py-2.5 text-sm font-medium"
           >
-            Advisor Portal
+            Advisor Dashboard
           </Link>
           <Link
             to="/intake"
             onClick={() => setOpen(false)}
             className="mt-2 bg-blue-500 text-white font-semibold text-center py-2.5 rounded-md text-sm"
           >
-            Get Your BankGrade
+            Get Your Free BankGrade
           </Link>
         </div>
       )}

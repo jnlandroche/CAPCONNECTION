@@ -84,19 +84,22 @@ export default function UploadPage() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-6">
-          <p className="text-xs font-semibold text-gold-400 tracking-wide uppercase mb-2">Document Center</p>
-          <h1 className="font-display text-4xl text-white font-500">Secure Document Upload</h1>
-          <p className="text-slate-400 text-sm mt-2">Upload required documents to enable full lender outreach. All files are encrypted at rest and in transit.</p>
+          <p className="text-xs font-semibold text-blue-400 tracking-wide uppercase mb-2">Document Center</p>
+          <h1 className="font-display text-4xl text-white font-semibold">Secure Document Upload</h1>
+          <p className="text-slate-400 text-sm mt-2">Upload financials confidentially to enable your full BankGrade assessment and lender outreach. All files are encrypted at rest and in transit.</p>
         </div>
 
         {/* Security badge */}
         <div className="flex items-center gap-3 my-5">
           <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded-full px-4 py-1.5">
             <Lock size={12} className="text-green-400" />
-            <span className="text-green-400 text-xs font-medium">256-bit AES Encryption</span>
+            <span className="text-green-400 text-xs font-semibold">256-bit AES Encryption</span>
           </div>
           <div className="flex items-center gap-2 bg-navy-800/60 border border-navy-700 rounded-full px-4 py-1.5">
             <span className="text-slate-400 text-xs font-medium">SOC 2 Type II Compliant</span>
+          </div>
+          <div className="flex items-center gap-2 bg-navy-800/60 border border-navy-700 rounded-full px-4 py-1.5">
+            <span className="text-slate-400 text-xs font-medium">Never shared without consent</span>
           </div>
         </div>
 
@@ -108,12 +111,12 @@ export default function UploadPage() {
             </p>
             <div className="w-full bg-navy-900 rounded-full h-1.5 mt-2">
               <div
-                className="bg-gold-400 h-1.5 rounded-full transition-all duration-500"
+                className="bg-blue-500 h-1.5 rounded-full transition-all duration-500"
                 style={{ width: `${(completedRequired / required.length) * 100}%` }}
               />
             </div>
           </div>
-          <div className="text-2xl font-display text-gold-400 font-600">
+          <div className="text-2xl font-display text-blue-400 font-semibold">
             {Math.round((completedRequired / required.length) * 100)}%
           </div>
         </div>
@@ -143,7 +146,7 @@ export default function UploadPage() {
         {/* Optional docs */}
         <div className="mb-10">
           <h2 className="text-sm font-semibold text-slate-300 mb-1">Supplemental Documents <span className="text-slate-500 font-normal">(Optional)</span></h2>
-          <p className="text-xs text-slate-500 mb-4">Supporting materials that strengthen your credit package.</p>
+          <p className="text-xs text-slate-500 mb-4">Supporting materials that strengthen your credit package and improve lender confidence.</p>
           <div className="space-y-3">
             {optional.map(doc => (
               <UploadCard
@@ -168,7 +171,7 @@ export default function UploadPage() {
           <Info size={16} className="text-blue-400 flex-shrink-0 mt-0.5" />
           <p className="text-xs text-slate-400 leading-relaxed">
             <strong className="text-blue-400">Prototype: </strong>
-            No files are actually transmitted or stored. This upload interface demonstrates the data room workflow. In production, files would be encrypted and stored in an isolated, lender-permissioned environment.
+            No files are actually transmitted or stored. This upload interface demonstrates the bank-ready data room workflow. In production, files would be encrypted, stored in an isolated environment, and shared only upon your explicit instruction.
           </p>
         </div>
       </div>
@@ -178,7 +181,7 @@ export default function UploadPage() {
 
 function UploadCard({ doc, upload, dragging, onDragOver, onDragLeave, onDrop, onFileChange, fileInputRef, onBrowse, formatSize }) {
   return (
-    <div className={`glass-card rounded-xl transition-all duration-200 ${dragging ? 'border-gold-400/50 bg-gold-400/5' : upload ? 'border-green-500/30' : ''}`}>
+    <div className={`glass-card rounded-xl transition-all duration-200 ${dragging ? 'border-blue-500/50 bg-blue-500/5' : upload ? 'border-green-500/30' : ''}`}>
       <div className="p-5 flex items-start gap-4">
         <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${upload ? 'bg-green-500/15 border border-green-500/30' : 'bg-navy-800 border border-navy-700'}`}>
           {upload ? <CheckCircle2 size={18} className="text-green-400" /> : <FileText size={18} className="text-slate-500" />}
@@ -187,7 +190,7 @@ function UploadCard({ doc, upload, dragging, onDragOver, onDragLeave, onDrop, on
           <div className="flex items-center gap-2 mb-0.5">
             <h3 className="text-sm font-semibold text-white">{doc.label}</h3>
             {doc.required && !upload && (
-              <span className="text-[10px] font-semibold text-gold-400 bg-gold-400/10 border border-gold-400/20 rounded px-1.5 py-0.5">Required</span>
+              <span className="text-[10px] font-semibold text-blue-400 bg-blue-500/10 border border-blue-500/20 rounded px-1.5 py-0.5">Required</span>
             )}
           </div>
           <p className="text-xs text-slate-500 mb-3">{doc.desc}</p>
@@ -207,13 +210,13 @@ function UploadCard({ doc, upload, dragging, onDragOver, onDragLeave, onDrop, on
               onDragLeave={onDragLeave}
               onDrop={onDrop}
               className={`border border-dashed rounded-lg p-4 text-center cursor-pointer transition-all ${
-                dragging ? 'border-gold-400/60 bg-gold-400/5' : 'border-navy-700 hover:border-navy-600'
+                dragging ? 'border-blue-500/60 bg-blue-500/5' : 'border-navy-700 hover:border-navy-600'
               }`}
               onClick={onBrowse}
             >
               <Upload size={16} className="text-slate-600 mx-auto mb-1" />
               <p className="text-xs text-slate-500">
-                Drag & drop or <span className="text-gold-400 underline">browse files</span>
+                Drag & drop or <span className="text-blue-400 underline">browse files</span>
               </p>
               <p className="text-[10px] text-slate-600 mt-0.5">PDF, Excel, CSV, Word — max 50 MB</p>
             </div>

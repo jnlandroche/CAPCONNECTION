@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { mockBorrowers, pipelineStats } from '../data/mockData';
-import { BarChart2, Filter, Search, ChevronRight, Bell, Settings, FileText, AlertCircle } from 'lucide-react';
+import { BarChart2, Search, ChevronRight, Bell, Settings, FileText, AlertCircle } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 
 const stageColors = {
@@ -62,7 +62,7 @@ export default function DashboardPage() {
       {/* Dashboard top bar */}
       <div className="bg-navy-900/80 border-b border-white/6 px-6 py-3 flex items-center justify-between">
         <div>
-          <span className="text-xs font-semibold text-blue-400 tracking-wide uppercase">Advisor Portal</span>
+          <span className="text-xs font-semibold text-blue-400 tracking-wide uppercase">BankGrade Advisor Dashboard</span>
           <span className="text-slate-600 mx-3">·</span>
           <span className="text-xs font-medium text-slate-500">J. Harmon — Senior Advisor</span>
         </div>
@@ -129,7 +129,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Borrower table */}
+        {/* Client table */}
         <div className="glass-card rounded-xl overflow-hidden">
           <div className="p-5 border-b border-white/6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <h2 className="text-sm font-semibold text-slate-200 flex items-center gap-2">

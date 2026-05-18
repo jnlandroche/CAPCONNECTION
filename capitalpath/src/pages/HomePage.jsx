@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Shield, BarChart2, Users, Clock, Building2, Landmark, Briefcase, TrendingUp, RotateCcw, Wrench, Home, CheckCircle } from 'lucide-react';
+import { ArrowRight, Shield, BarChart2, Users, Clock, Building2, Landmark, Briefcase, TrendingUp, RotateCcw, Wrench, Home, CheckCircle, Star } from 'lucide-react';
 import Ticker from '../components/Ticker';
 
 const solutions = [
-  { icon: Briefcase, label: 'Acquisition Financing', desc: 'Debt structuring for sponsored and non-sponsored M&A transactions in the $10M–$150M range.' },
-  { icon: RotateCcw, label: 'Refinancing', desc: 'Replace existing debt at improved terms, reduced pricing, or extended maturities.' },
-  { icon: TrendingUp, label: 'Growth Capital', desc: 'Leverage your balance sheet to fund organic expansion without equity dilution.' },
-  { icon: Wrench, label: 'Equipment Lines', desc: 'Asset-backed facilities for capital equipment, fleet, and manufacturing capacity.' },
-  { icon: BarChart2, label: 'Recapitalization', desc: 'Balance sheet optimization — restructure ownership and leverage simultaneously.' },
-  { icon: Home, label: 'Real Estate Financing', desc: 'CRE bridge, construction, and permanent debt for owner-operators and investors.' },
-  { icon: Landmark, label: 'Working Capital', desc: 'ABL facilities, revolving credit, and borrowing base structures for liquidity.' },
-  { icon: Building2, label: 'Sponsor Finance', desc: 'Platform and add-on acquisitions, dividend recaps, and LP liquidity solutions.' },
+  { icon: Briefcase, label: 'Acquisition Financing', desc: 'Bankability assessment and lender-fit intelligence for sponsored and non-sponsored M&A in the $10M–$150M range.' },
+  { icon: RotateCcw, label: 'Refinancing', desc: 'Understand your financing readiness before approaching lenders — and identify the best path to improved terms.' },
+  { icon: TrendingUp, label: 'Growth Capital', desc: 'Know your BankGrade before seeking growth debt — avoid mismatched lender conversations that cost time.' },
+  { icon: Wrench, label: 'Equipment Financing', desc: 'Asset-backed readiness assessment for capital equipment, fleet, and manufacturing capacity expansion.' },
+  { icon: BarChart2, label: 'Recapitalization', desc: 'Financing readiness review for balance sheet optimization — restructure ownership and leverage intelligently.' },
+  { icon: Home, label: 'Real Estate Financing', desc: 'Corporate lending guidance for CRE bridge, construction, and permanent debt for owner-operators.' },
+  { icon: Landmark, label: 'Working Capital', desc: 'Lender-fit intelligence for ABL facilities, revolving credit, and borrowing base structures.' },
+  { icon: Building2, label: 'Sponsor Finance', desc: 'Middle market financing intelligence for platform acquisitions, dividend recaps, and add-on transactions.' },
 ];
 
 const stats = [
@@ -22,18 +22,26 @@ const stats = [
 ];
 
 const steps = [
-  { num: '01', title: 'Submit Intake', desc: 'Complete a structured financing request covering your company profile, financials, and capital objectives.' },
-  { num: '02', title: 'Get Your BankGrade', desc: 'Receive an institutional-grade Bank Readiness Score with structure analysis, pricing guidance, and lender fit.' },
-  { num: '03', title: 'Upload Documents', desc: 'Securely share financials, tax returns, projections, and deal documents in a bank-ready data room.' },
-  { num: '04', title: 'Lender Outreach', desc: 'We engage our network of 180+ banks, credit funds, and direct lenders on your behalf.' },
-  { num: '05', title: 'Compare Terms', desc: 'Review structured lender responses side-by-side and select the optimal capital structure.' },
+  { num: '01', title: 'Complete Financing Profile', desc: 'Answer a structured set of questions about your company, financials, and capital objectives. Takes under 10 minutes.' },
+  { num: '02', title: 'Upload Financials Confidentially', desc: 'Securely share your financials in a bank-ready environment. Files are encrypted and never shared without your consent.' },
+  { num: '03', title: 'Receive Your BankGrade Report', desc: 'Your free report shows your grade, eligible financing range, likely structures, indicative pricing, risks, and next steps.' },
+  { num: '04', title: 'Review Lender Fit', desc: 'See which lender types align with your credit profile — banks, direct lenders, credit funds — before you go to market.' },
+  { num: '05', title: 'Request Advisor Guidance', desc: 'Speak with a BankGrade Advisor who can identify potential lenders and guide your capital raise from start to close.' },
 ];
 
 const pillars = [
-  { icon: Shield, label: 'Confidential', desc: 'Your data is never shared without explicit consent.' },
-  { icon: BarChart2, label: 'Intelligent', desc: 'Institutional-grade analysis delivered instantly.' },
-  { icon: Users, label: 'Trusted', desc: '180+ lender relationships across every structure.' },
-  { icon: Clock, label: 'Results-Driven', desc: 'Average 38 days from intake to term sheet.' },
+  { icon: Shield, label: 'Confidential by Design', desc: 'Your data is never shared without explicit consent.' },
+  { icon: BarChart2, label: 'Financing Intelligence', desc: 'Bankability assessment grounded in real lender standards.' },
+  { icon: Users, label: 'Lender-Fit Matching', desc: '180+ lender relationships across every structure and size.' },
+  { icon: Clock, label: 'Results-Driven', desc: 'Average 38 days from profile to term sheet.' },
+];
+
+const gradeScale = [
+  { grade: 'A', label: 'Exceptional', color: 'text-green-400', bg: 'bg-green-500/10 border-green-500/20' },
+  { grade: 'B+', label: 'Good', color: 'text-blue-400', bg: 'bg-blue-500/10 border-blue-500/20' },
+  { grade: 'B', label: 'Adequate', color: 'text-gold-400', bg: 'bg-gold-400/10 border-gold-400/20' },
+  { grade: 'C+', label: 'Marginal', color: 'text-amber-400', bg: 'bg-amber-500/10 border-amber-500/20' },
+  { grade: 'C', label: 'Substandard', color: 'text-red-400', bg: 'bg-red-500/10 border-red-500/20' },
 ];
 
 export default function HomePage() {
@@ -42,12 +50,12 @@ export default function HomePage() {
       <Ticker />
 
       {/* Hero */}
-      <section className="relative flex items-center overflow-hidden">
+      <section className="relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div
-            className="absolute inset-0 opacity-[0.03]"
+            className="absolute inset-0 opacity-[0.025]"
             style={{
-              backgroundImage: `linear-gradient(rgba(45,91,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(45,91,255,0.6) 1px, transparent 1px)`,
+              backgroundImage: `linear-gradient(rgba(45,91,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(45,91,255,0.8) 1px, transparent 1px)`,
               backgroundSize: '60px 60px',
             }}
           />
@@ -58,10 +66,9 @@ export default function HomePage() {
 
         <div className="relative max-w-7xl mx-auto px-6 py-16">
           <div className="max-w-4xl">
-            {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/25 rounded-full px-4 py-1.5 mb-8 animate-fade-in">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-              <span className="text-blue-300 text-xs font-semibold tracking-wider">MIDDLE MARKET FINANCING INTELLIGENCE</span>
+              <span className="text-blue-300 text-xs font-semibold tracking-wider uppercase">Middle Market Financing Intelligence</span>
             </div>
 
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold text-white leading-[1.1] mb-6 animate-fade-in-up">
@@ -70,9 +77,10 @@ export default function HomePage() {
               <span className="gold-shimmer">Before the Market Does.</span>
             </h1>
 
-            <p className="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mb-10 animate-fade-in-up delay-100">
-              BankGrade prepares middle market companies for institutional debt markets — with confidential financial assessments, structured lender outreach, and term sheet comparison. Finance with confidence.
+            <p className="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mb-3 animate-fade-in-up delay-100">
+              Confidential financing intelligence for middle market companies seeking acquisition financing, refinancing, working capital, equipment financing, growth capital, and recapitalizations.
             </p>
+            <p className="text-slate-500 text-base mb-10 animate-fade-in-up delay-200 font-medium">Finance with Confidence.</p>
 
             <div className="flex flex-col sm:flex-row gap-3 animate-fade-in-up delay-200">
               <Link
@@ -86,11 +94,10 @@ export default function HomePage() {
                 to="/assessment"
                 className="inline-flex items-center justify-center gap-2 border border-white/12 hover:border-white/25 text-slate-300 hover:text-white text-sm px-7 py-3.5 rounded-md transition-all duration-200 font-medium"
               >
-                View Sample Report
+                See Sample Report
               </Link>
             </div>
 
-            {/* Stat row */}
             <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 animate-fade-in-up delay-300">
               {stats.map((s) => (
                 <div key={s.label}>
@@ -112,8 +119,12 @@ export default function HomePage() {
                 <span className="text-2xl font-display font-bold text-gold-400">B+</span>
               </div>
               <div>
-                <p className="text-white font-semibold text-sm">Your BankGrade™ is Ready</p>
-                <p className="text-slate-400 text-xs mt-0.5">Financing Capacity: <span className="text-white font-semibold">$18M – $28M</span> · Bank Readiness Score: <span className="text-white font-semibold">82 / 100</span></p>
+                <p className="text-white font-semibold text-sm">Your BankGrade™ Report is Ready</p>
+                <p className="text-slate-400 text-xs mt-0.5">
+                  Indicative Financing Capacity: <span className="text-white font-semibold">$18MM – $28MM</span>
+                  {' · '}Bank Readiness Score: <span className="text-white font-semibold">82 / 100</span>
+                  {' · '}Pricing: <span className="text-white font-semibold">SOFR + 225–325</span>
+                </p>
               </div>
             </div>
             <div className="flex items-center gap-6 text-xs text-slate-400">
@@ -125,19 +136,68 @@ export default function HomePage() {
               ))}
             </div>
             <Link to="/intake" className="flex-shrink-0 bg-blue-500 hover:bg-blue-400 text-white font-semibold text-sm px-5 py-2.5 rounded-md transition-all">
-              Get Started Free
+              Get Your BankGrade
             </Link>
           </div>
         </div>
       </section>
 
+      {/* What is BankGrade */}
+      <section className="py-14 border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-xs font-semibold text-blue-400 tracking-wide uppercase mb-3">What is a BankGrade?</p>
+              <h2 className="font-display text-4xl text-white font-semibold mb-4">
+                Your bankability score,<br />before lenders see it.
+              </h2>
+              <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                A BankGrade is an institutional-quality financing readiness assessment — the same lens a credit committee uses to evaluate your company. It tells you exactly where you stand, what structures you qualify for, and what lenders will want to see before you spend a day in due diligence.
+              </p>
+              <div className="space-y-3">
+                {[
+                  'Bankability assessment based on real lender credit standards',
+                  'Financing readiness score from A to D (letter grade system)',
+                  'Lender-fit intelligence — which lender types match your profile',
+                  'Corporate lending guidance with actionable next steps',
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-2.5">
+                    <CheckCircle size={15} className="text-blue-400 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-slate-300">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="glass-card rounded-2xl p-6">
+              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-4">BankGrade Scale</p>
+              <div className="space-y-2.5 mb-6">
+                {gradeScale.map(g => (
+                  <div key={g.grade} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg border ${g.bg}`}>
+                    <span className={`text-xl font-display font-bold w-8 text-center ${g.color}`}>{g.grade}</span>
+                    <div className="flex-1">
+                      <span className="text-sm text-white font-medium">{g.label}</span>
+                    </div>
+                    {g.grade === 'B+' && (
+                      <span className="text-[10px] font-semibold text-blue-400 bg-blue-500/15 border border-blue-500/30 px-2 py-0.5 rounded-full">Your Score</span>
+                    )}
+                  </div>
+                ))}
+              </div>
+              <Link to="/intake" className="w-full block text-center bg-blue-500 hover:bg-blue-400 text-white font-semibold text-sm py-3 rounded-md transition-all">
+                Get Your Free BankGrade
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Solutions grid */}
-      <section id="solutions" className="py-14 border-t border-white/5">
+      <section id="solutions" className="py-14 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-8">
-            <p className="text-xs font-semibold text-blue-400 tracking-wide uppercase mb-3">Financing Solutions</p>
+            <p className="text-xs font-semibold text-blue-400 tracking-wide uppercase mb-3">Middle Market Financing Intelligence</p>
             <h2 className="font-display text-4xl text-white font-semibold">
-              Capital structures for every<br />stage of growth
+              Corporate lending guidance<br />across every structure
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -159,11 +219,11 @@ export default function HomePage() {
       </section>
 
       {/* How it works */}
-      <section className="py-14 bg-navy-900/30 border-y border-white/5">
+      <section className="py-14 bg-navy-900/30 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-8">
             <p className="text-xs font-semibold text-blue-400 tracking-wide uppercase mb-3">How It Works</p>
-            <h2 className="font-display text-4xl text-white font-semibold">Bank-ready in five steps</h2>
+            <h2 className="font-display text-4xl text-white font-semibold">From profile to term sheet in five steps</h2>
           </div>
           <div className="relative">
             <div className="hidden lg:block absolute top-8 left-[3.5rem] right-[3.5rem] h-px bg-gradient-to-r from-navy-800 via-blue-500/20 to-navy-800" />
@@ -209,20 +269,28 @@ export default function HomePage() {
           <div className="relative rounded-xl overflow-hidden glass-card border-blue-500/20 p-12 text-center">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-blue-500/5" />
             <div className="relative">
-              <p className="text-xs font-semibold text-blue-400 tracking-wide uppercase mb-4">Get Started Today</p>
+              <p className="text-xs font-semibold text-blue-400 tracking-wide uppercase mb-4">Free · Confidential · No Commitment</p>
               <h2 className="font-display text-4xl md:text-5xl text-white font-semibold mb-5">
                 Know your BankGrade<br />before you go to market.
               </h2>
               <p className="text-slate-400 max-w-xl mx-auto mb-8 text-sm leading-relaxed">
-                Complete a 10-minute intake and receive an institutional-grade financing assessment — including your BankGrade score, structure options, and lender recommendations.
+                Complete a 10-minute financing profile and receive an institutional-grade bankability assessment — including your BankGrade, eligible financing range, likely structures, indicative pricing, and recommended next steps.
               </p>
-              <Link
-                to="/intake"
-                className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-400 text-white font-semibold px-8 py-3.5 rounded-md transition-all duration-200 shadow-lg shadow-blue-500/25"
-              >
-                Get Your Free BankGrade
-                <ArrowRight size={16} />
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link
+                  to="/intake"
+                  className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-400 text-white font-semibold px-8 py-3.5 rounded-md transition-all duration-200 shadow-lg shadow-blue-500/25"
+                >
+                  Get Your Free BankGrade
+                  <ArrowRight size={16} />
+                </Link>
+                <Link
+                  to="/assessment"
+                  className="inline-flex items-center gap-2 border border-white/12 hover:border-white/25 text-slate-300 hover:text-white px-8 py-3.5 rounded-md transition-all duration-200 font-medium text-sm"
+                >
+                  See Sample Report
+                </Link>
+              </div>
             </div>
           </div>
         </div>
