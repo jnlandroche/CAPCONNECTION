@@ -185,14 +185,14 @@ export const mockAssessment = {
 };
 
 export const tickerData = [
-  "SOFR 1M: 5.33%",
-  "Prime Rate: 8.50%",
-  "10Y UST: 4.28%",
-  "Lev Loan Index: SOFR+412",
-  "HY Spread (BB): +192 bps",
-  "Avg. TL Spread (MM): SOFR+350",
-  "Direct Lender Unitranche: SOFR+525",
-  "Mezz Rate (Senior): 12.5%–14.5%",
-  "M&A Volume YTD: $842B",
-  "MM PE Deal Count: 1,204 (YTD)",
+  { label: "SOFR 1M", value: "5.33%" },
+  { label: "Prime Rate", value: "8.50%" },
+  { label: "10Y Treasury", value: "4.28%" },
+  { label: "Leveraged Loan Index", value: "SOFR +412" },
+  { label: "HY Spread", value: "+192 bps" },
+  { label: "Middle Market TL", value: "SOFR +350" },
+  { label: "Unitranche", value: "SOFR +525" },
+  { label: "Mezz Rate", value: "12.5% – 14.5%" },
+  { label: "M&A Volume YTD", value: "$842B" },
+  { label: "MM Deal Count YTD", value: "1,204" },
 ];
